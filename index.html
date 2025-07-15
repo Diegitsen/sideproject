@@ -1025,7 +1025,7 @@
                     </h1>
                 </div>
                 <div class="column">
-                    <a href="mailto:angelagomezfornes@gmail.com">mail</a>
+                    <a href="mailto:angelagomezfornes@gmail.com">mailxd</a>
                      /
                           
                     <a target="_blank" href="https://www.instagram.com/angelag______">@ig</a>
@@ -1164,6 +1164,36 @@
     // Llamar a la función para añadir las clases a las imágenes
     addDraggableClassesToImages();
     </script>
+
+    <script>
+document.querySelectorAll('.draggable').forEach((img) => {
+    let isDragging = false;
+    let startX, startY;
+
+    img.addEventListener('mousedown', (e) => {
+        isDragging = false;
+        startX = e.clientX;
+        startY = e.clientY;
+    });
+
+    img.addEventListener('mousemove', (e) => {
+        const dx = Math.abs(e.clientX - startX);
+        const dy = Math.abs(e.clientY - startY);
+        if (dx > 5 || dy > 5) {
+            isDragging = true;
+        }
+    });
+
+    img.addEventListener('mouseup', (e) => {
+        if (!isDragging) {
+            alert('Haz hecho click en una imagen draggable');
+            // Aquí puedes abrir un modal, cambiar estilos, etc.
+        }
+    });
+});
+</script>
+
+
 
     <script type="speculationrules">
     {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/angelatheme\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
