@@ -969,10 +969,10 @@
             </div>
         </nav>
         <div class="home__mobile-title">
-            <h1 style="margin: 0; font-size: 26px; line-height: 1.2;">
+            <h1 style="margin: 0; font-size: 18px; line-height: 1.2;">
                 <a href="/">diegitsen</a>
             </h1>
-            <h2 style="margin-top: 6px; font-size: 14px;">sustainable sewing</h2>
+            <h2 style="margin-top: 6px; font-size: 12px;">sustainable sewing</h2>
         </div>
 
         <script>
@@ -1190,8 +1190,17 @@
 
     img.addEventListener('mouseup', (e) => {
         if (!isDragging) {
-            alert('clickkkkkkkkkk');
-            // Aquí puedes abrir un modal, cambiar estilos, etc.
+            const customUrl = img.getAttribute('data-url')
+                || img.getAttribute('data-href')
+                || img.getAttribute('data-link');
+            let targetUrl = customUrl;
+            if (!targetUrl) {
+                const src = img.currentSrc || img.src || '';
+                const filename = src.split('?')[0].split('#')[0].split('/').pop() || '';
+                const base = filename.replace(/\.[^./]+$/, '');
+                targetUrl = base ? `${base}.html` : src;
+            }
+            window.location.href = targetUrl;
         }
     });
     });
