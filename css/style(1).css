@@ -602,18 +602,21 @@ span.draggable {
     }
 
     .object1 {
-        left: 115px;
-        top: 405px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 128px;
     }
 
     .object2 {
-        left: 176px;
-        top: 293px;
+        left: 20%;
+        transform: translateX(-20%);
+        top: 456px;
     }
 
     .object3 {
-        left: 105px; 
-        top: 265px;
+        left: 80%;
+        transform: translateX(-80%);
+        top: 456px;
     }
 
     .object4 {
@@ -723,18 +726,21 @@ span.draggable {
 
 
     .object1 {
-        left: 949px;
-        top: 308px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 28px;
     }
 
     .object2 {
-        left: 682px;
-    top: 396px;
+        left: 20%;
+        transform: translateX(-20%);
+        top: 196px;
     }
 
     .object3 {
-        left: 803px;
-    top: 211px;
+        left: 80%;
+        transform: translateX(-80%);
+        top: 196px;
     }
 
     .object4 {
