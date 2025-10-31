@@ -740,10 +740,8 @@
 
         <nav>
             <!-- show modal -->
-            <div class="icon" id="toggleIcon">
-                <a aria-label="menu" class="line line1" href="#" id="show-modal_page">
-                            +
-                        </a>
+            <div class="column" id="toggleIcon">
+                <a style="font-size: 14px" aria-label="about" class="column" href="about.html" id="show-modal_page">(about)</a>
             </div>
             <!-- modal -->
             <div aria-description="menu" id="modal_page" class="styled hide">
@@ -972,7 +970,7 @@
             <h1 style="margin: 0; font-size: 18px; line-height: 1.2;">
                 <a href="/">diegitsen</a>
             </h1>
-            <h2 style="margin-top: 6px; font-size: 12px;"><p>(<strong>ANGELA GOMEZ</strong>) — Freelance <strong>stylist</strong> and <strong>creative</strong> <strong>director</strong> . Involving mainly editorials , campaigns , e-commerce , publicity , musical videos , films, or celebrities. Also in the creative field of photography approaching from the analog , events , bts , model testing or other artistic projects. Also in to artistic and fashion management, and creation content of social media.</p></h2>
+            <h2 style="margin-top: 6px; font-size: 12px;"><p>sustainable sewing</p></h2>
         </div>
 
         <script>
@@ -994,19 +992,25 @@
             });
 
             // page
-
             $(document).ready(function() {
-                $('#toggleIcon').on('click', function() {
-                    $('#modal_page').toggleClass('show');
-                });
+                const $link = $('#show-modal_page');
+                if ($link.attr('href') === '#') {
+                    $('#toggleIcon').on('click', function() {
+                        $('#modal_page').toggleClass('show');
+                    });
+                }
             });
         });
         </script>
         <script>
         const toggleIcon = document.getElementById('toggleIcon');
-        toggleIcon.addEventListener('click', () => {
-            toggleIcon.classList.toggle('cross');
-        });
+        const linkEl = document.getElementById('show-modal_page');
+        // Solo alternar la cruz si sigue siendo botón de menú
+        if (linkEl && linkEl.getAttribute('href') === '#') {
+            toggleIcon.addEventListener('click', () => {
+                toggleIcon.classList.toggle('cross');
+            });
+        }
         </script>
     </div>
 
@@ -1025,7 +1029,7 @@
                         <h1 style="margin: 0; font-size: 26px; line-height: 1.2;">
                             <a href="/">diegitsen</a>
                         </h1>
-                        <div style="margin-top: 6px; font-size: 14px;"><p>(<strong>ANGELA GOMEZ</strong>) — Freelance <strong>stylist</strong> and <strong>creative</strong> <strong>director</strong> . Involving mainly editorials , campaigns , e-commerce , publicity , musical videos , films, or celebrities. Also in the creative field of photography approaching from the analog , events , bts , model testing or other artistic projects. Also in to artistic and fashion management, and creation content of social media.</p></div>
+                        <div style="margin-top: 6px; font-size: 14px;"><p>sustainable sewing</p></div>
                     </div>
                 </div>
                 <div class="column">
@@ -1065,10 +1069,9 @@
             </div>
 
             <script>
-
             document.querySelectorAll('.category-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    // Primero, hacemos que todos los elementos se pongan grises
+                    // Primero, hacemos que todos los elementos se pongan grises oksi
                     document.querySelectorAll('.category-item').forEach(el => el.classList.add('inactive'));
 
                     // Luego, removemos la clase 'inactive' del que ha sido clickeado (para mantenerlo en su estado normal)
@@ -1146,6 +1149,7 @@
                 div.style.display = 'none';
             }
         });
+
         </script>
 
     </div>
