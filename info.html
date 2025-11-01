@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>journal 001</title>
+
+  <style>
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --muted: #666;
+      --maxw: 900px;
+      --g: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "IBM Plex Mono", monospace;
+      line-height: 1.5;
+    }
+
+    img { width: 100%; display: block; }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+    h1 { font-size: 22px; margin: 5px 0; }
+    .sub { font-size: 12px; color: var(--muted); }
+    .day { display: inline-block; border: 1px solid #000; padding: 3px 8px; font-size: 11px; margin-top: 6px; }
+
+    main {
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 20px;
+    }
+
+    .spread { margin-bottom: 50px; }
+
+    .spread--diptych,
+    .spread--stack {
+      display: grid;
+      gap: var(--g);
+    }
+
+    @media (min-width: 768px) {
+      .spread--diptych,
+      .spread--stack {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      border-top: 1px solid #eee;
+    }
+
+    /* === Collage tipo “dos fotos superpuestas” (mobile-first) === */
+    .collage-feet{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;         /* cambia a 16/9 si quieres más panorámico */
+      background: #fff;
+    }
+    .collage-feet::before,
+    .collage-feet::after{
+      content: "";
+      position: absolute;
+      background-image: var(--src); /* la misma imagen para ambas “láminas” */
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      border: 10px solid #fff;      /* marco blanco tipo papel */
+      will-change: transform;
+    }
+    /* Lámina grande (abajo-izquierda) */
+    .collage-feet::before{
+      left: 0;
+      bottom: 0;
+      width: 78%;
+      height: 78%;
+      background-position: var(--pos1, 35% 70%); /* ajusta encuadre */
+      transform: rotate(-2.2deg);
+    }
+    /* Lámina pequeña (arriba-derecha) */
+    .collage-feet::after{
+      right: 0;
+      top: 6%;
+      width: 58%;
+      height: 58%;
+      background-position: var(--pos2, 70% 45%); /* ajusta encuadre */
+      transform: rotate(2.6deg);
+    }
+    @media (min-width: 768px){
+      .collage-feet{ aspect-ratio: 16 / 9; }
+      .collage-feet::before{ width: 72%; height: 78%; }
+      .collage-feet::after{  width: 50%; height: 56%; top: 8%; }
+    }
+
+    /* ===== Texto + Imagen siempre lado a lado ===== */
+.spread--text-image{
+  display: grid;
+  align-items: start;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr; /* mitad texto / mitad imagen */
+}
+
+.poem{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+               "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  line-height: 1.6;
+  font-size: 12px;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+}
+
+.poem .scene{
+  display:block;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.ti-figure{
+  background:#fff;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+.ti-figure img{
+  width: 100%;
+  display: block;
+  filter: grayscale(100%) contrast(95%) brightness(110%);
+  opacity: .85;
+}
+
+/* Ajustes en pantallas grandes: más aire, tipografía más grande */
+@media (min-width: 768px){
+  .spread--text-image{
+    gap: 40px;
+    grid-template-columns: 1.05fr 1.4fr;
+  }
+  .poem{
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+/* ===== Texto + columna de 2 imágenes apiladas ===== */
+.spread--text-side-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* texto / columna de imágenes */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Columna de imágenes apiladas */
+.ti-images {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Imagen con efecto editorial */
+.ti-figure {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+.ti-figure img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%) contrast(95%) brightness(110%);
+  opacity: 0.85;
+}
+
+/* Texto estilo máquina */
+.poem {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+               "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  line-height: 1.6;
+  font-size: 13px;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+}
+.poem .scene {
+  display: block;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .spread--text-side-stack {
+    grid-template-columns: 1.1fr 1fr; /* texto ligeramente más ancho */
+    gap: 14px;
+  }
+}
+@media (max-width: 540px) {
+  /* En pantallas muy pequeñas, apilar verticalmente */
+  .spread--text-side-stack {
+    grid-template-columns: 1fr;
+  }
+  .ti-images {
+    flex-direction: row;
+    gap: 8px;
+  }
+  .ti-figure {
+    flex: 1;
+    padding: 6px;
+  }
+}
+
+
+/* === Contact sheet (izq) + 2 imágenes apiladas (der) === */
+.spread--contact-vs-stack{
+  display:grid;
+  grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+  gap: 28px;
+  align-items:start;
+}
+
+/* Marco editorial blanco */
+.frame{
+  background:#fff;
+  padding:12px;            /* grosor del borde blanco */
+  border:1px solid #eee;
+}
+
+/* === Una imagen alta (izquierda) + dos apiladas (derecha) === */
+.spread--tall-vs-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+  gap: 24px;
+  align-items: stretch; /* iguala las alturas */
+}
+
+/* Columna derecha con dos imágenes apiladas */
+.stack2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Imágenes con borde blanco tipo editorial */
+.frame {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #eee;
+  display: flex;
+}
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* La imagen alta ocupará el alto total de la columna derecha */
+.tall-image {
+  display: flex;
+}
+.tall-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .spread--tall-vs-stack {
+    grid-template-columns: 1fr;
+  }
+  .stack2 {
+    flex-direction: row;
+  }
+  .stack2 figure {
+    flex: 1;
+  }
+}
+.figure-small img {
+  width: 40%;          /* la reduce al 50% del ancho normal */
+  margin: 0 auto;      /* la centra horizontalmente */
+  display: block;
+}
+.figure-small figcaption {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* === Izquierda: 1 imagen | Derecha: imagen + caption
+   La izquierda iguala la altura total de la derecha (imagen + texto) === */
+   .spread--sync-height{
+  display:grid;
+  grid-template-columns: 1fr 1fr;   /* izquierda / derecha */
+  grid-template-rows: auto auto;    /* fila1: imagen der | fila2: caption der */
+  column-gap: 36px;
+  row-gap: 14px;                    /* se suma a la altura total de la derecha */
+  align-items: stretch;
+}
+
+/* Izquierda ocupa ambas filas => iguala altura de (img der + caption) */
+.sync-left{
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display:flex;                     /* permite que el <img> llene la altura */
+  background:#fff;
+  padding:12px;                     /* marco blanco */
+  border:1px solid #eee;
+}
+.sync-left img{
+  width:100%;
+  height:100%;
+  object-fit: cover;                /* recorte elegante sin deformar */
+  display:block;
+}
+
+/* Derecha: foto en fila 1, caption en fila 2 */
+.sync-right-photo{
+  grid-column: 2;
+  grid-row: 1;
+  background:#fff;
+  padding:12px;
+  border:1px solid #eee;
+}
+.sync-right-photo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.sync-right-caption{
+  grid-column: 2;
+  grid-row: 2;
+  margin:0;                         /* quita margen default de figcaption/p */
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing:.06em;
+  line-height:1.6;
+  font-size:12px;
+  color:#2a2a2a;
+  white-space:pre-wrap;             /* respeta saltos de línea */
+}
+
+/* Ajustes finos para pantallas pequeñas, manteniendo 2 columnas */
+@media (max-width: 600px){
+  .spread--sync-height{
+    column-gap: 16px;
+    row-gap: 10px;
+  }
+  .sync-left, .sync-right-photo{ padding:8px; }
+  .sync-right-caption{ font-size:11px; line-height:1.55; }
+}
+
+
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <div class="kicker">journal 001</div>
+    <p>ssstufff hoodie</p>
+    <span class="day">001</span>
+  </div>
+</header>
+
+<main>
+    <section class="spread spread--single">
+        <figure class="figure-small">
+          <img src="./images/001.png" alt="">
+      
+        </figure>
+      </section>    
+
+  <!-- Collage de una sola imagen (reemplaza el spread--collage anterior) -->
+  <!-- Cambia la ruta en url(...) por tu imagen. Ajusta --pos1 y --pos2 para el encuadre. -->
+  <section class="spread">
+    <!-- OPCIONAL: selector de imagen para probar al vuelo -->
+
+    <div id="collage"
+         class="collage-feet"
+         style="
+           --src: url('./001/2.jpg');
+           --pos1: 35% 70%;
+           --pos2: 70% 45%;
+         ">
+    </div>
+  </section>
+
+  <section class="spread spread--postcard">
+    <figure>
+      <img src="./001/3.jpg" alt="">
+      <figcaption>YOU MEET LARRY DOWN THE PATH.</figcaption>
+    </figure>
+  </section>
+
+  <section class="spread spread--single">
+    <figure><img src="./001/4.jpg" alt=""></figure>
+  </section>
+
+  <section class="spread spread--bleed">
+    <img src="./001/5.jpg" alt="">
+  </section>
+
+  <section class="spread spread--diptych">
+    <figure><img src="assets/66712141-DCD6-422A-8FAF-F6B2A238FAE4.jpeg" alt=""></figure>
+    <figure><img src="assets/04A4B3B2-86A1-42D5-A320-F982BD08A71C.jpeg" alt=""></figure>
+  </section>
+
+  <section class="spread spread--stack">
+    <figure><img src="assets/3F414E83-951A-4590-A3C1-17ED5680FB91.jpeg" alt=""></figure>
+    <figure><img src="assets/5F48682D-8438-4EA4-801F-65BA5BCFD872.jpeg" alt=""></figure>
+  </section>
+
+  <section class="spread spread--text-image side-by-side">
+    <div class="ti-text">
+      <div class="poem">
+        <span class="scene">SCENE 4. THE GRAND FINALE: INTEGRATRON.</span>
+  10:19
+  
+  CLIMB THE LADDER.
+  I SHRINK.
+  MINIATURE ME. I AM SMALL.
+  SAFELY NESTLED INSIDE THIS WOODEN GUITAR.
+  
+  BODY COLD, YET MY HEART ABSORBS THE WARMING TONES OF THIS TREE-WOMB.
+  A CIRCULAR DOME.
+  MY EYES LOST IN THE PATTERNS OF THE WOOD GRAIN.
+  WARPED AT THE APEX. THE CENTRAL POINT OF THIS SPIRAL STRUCTURE.
+  A LIFE-SIZE INSTRUMENT.
+  THE SOUNDS BOUNCE AROUND LIKE PING-PONG BALLS FROM HEAVEN.
+  VIBRATING MY SPINE FROM TOP TO BOTTOM.
+  AN AUDIO ALIGNMENT.
+  
+  I TAKE A BREATH.
+  I LIFT MY LEGS TO THE CEILING.
+  TOES POINTING TO THE PINHOLE OF WHITE.
+  PUREST
+  DE — LIGHT.
+      </div>
+    </div>
+  
+    <div class="ti-images">
+        <figure class="ti-figure">
+          <img src="./001/5.jpg" alt="Upper image">
+        </figure>
+        <figure class="ti-figure">
+          <img src="./001/1.jpg" alt="Lower image">
+        </figure>
+      </div>
+  </section>
+  
+  <section class="spread spread--tall-vs-stack">
+    <figure class="frame tall-image">
+      <img src="./001/1.jpg" alt="Tall contact sheet image">
+    </figure>
+  
+    <div class="stack2">
+      <figure class="frame">
+        <img src="./001/2.jpg" alt="Tree and sky photo">
+      </figure>
+      <figure class="frame">
+        <img src="./001/3.jpg" alt="Yellow knit in interior">
+      </figure>
+    </div>
+  </section>
+  
+  <section class="spread spread--sync-height">
+    <!-- Izquierda: imagen que debe igualar la suma (derecha img + texto) -->
+    <figure class="sync-left">
+      <img src="./001/3.jpg" alt="Foto izquierda alta">
+    </figure>
+  
+    <!-- Derecha: imagen -->
+    <figure class="sync-right-photo">
+      <img src="./001/4.jpg" alt="Foto derecha">
+    </figure>
+  
+    <!-- Derecha: caption debajo -->
+    <figcaption class="sync-right-caption">
+  14:22
+  SHORTLY AFTER SEEING A ‘YELLOW BREASTED BIRDIE’
+  I FELT AN URGE TO PUT A FULL ZINGI SUIT ON.
+  
+  G07G NONNA PANTS, G02T NONNA TUBE SKIRT IN ZINGI FOR —
+  • DANCING IN THE SUN
+  • PAINTING IN THE DINING ROOM
+  • BURSTS OF INSPIRATION IN THE STUDIO.
+    </figcaption>
+  </section>
+  
+  
+  
+</main>
+
+<footer class="site-footer">
+  <p>© Desert Dance — Day 5</p>
+</footer>
+
+<!-- JS opcional: permite subir una imagen y aplicar el efecto sin tocar código -->
+<script>
+  const input = document.getElementById('pick');
+  const collage = document.getElementById('collage');
+  input.addEventListener('change', e => {
+    const file = e.target.files && e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
+    reader.readAsDataURL(file);
+  });
+</script>
+
+</body>
+</html>
