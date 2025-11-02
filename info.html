@@ -215,20 +215,24 @@
     gap: 14px;
   }
 }
+
 @media (max-width: 540px) {
-  /* En pantallas muy pequeñas, apilar verticalmente */
+  /* En pantallas pequeñas, texto arriba y columna de imágenes debajo */
   .spread--text-side-stack {
     grid-template-columns: 1fr;
   }
+
+  /* 👇 mantiene las imágenes apiladas verticalmente */
   .ti-images {
-    flex-direction: row;
-    gap: 8px;
+    flex-direction: column;
+    gap: 12px;
   }
+
   .ti-figure {
-    flex: 1;
-    padding: 6px;
+    padding: 8px;
   }
 }
+
 
 
 /* === Contact sheet (izq) + 2 imágenes apiladas (der) === */
