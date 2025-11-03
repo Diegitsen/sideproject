@@ -1,268 +1,617 @@
-  <!-- 
-    code and design by Maria Lara
-    2023
-    maaarialara.com
-   -->
-<!DOCTYPE html>
-<html lang="en">
+  <!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Marta Cazalla" />
-    <meta property="og:description" content="archives" />
-    <meta property="og:image" content="https://martacazalla.com/wp-content/uploads/2023/01/IMG-20220714-WA0018-768x1159.jpg" />
-    <meta property="og:url" content="https://martacazalla.com/" />
-    <meta name="web_author" description="Maria Lara">
-    <link rel="icon" href="favicon.png">
-    <script>
-      function touches(e){
-        var x = e.touches ? e.touches[0].clientX : e.clientX, 
-            y = e.touches ? e.touches[0].clientY : e.clientY;
-        var w = window.innerWidth / 2;
-        var h = window.innerHeight / 2;
-        
-        var l = -(x - w) / (w / 20) - 20;
-        var t = -(y - h) / (h / 20) - 20;            
-        //console.log(y + ' | ' + h + ' | ' + t);
-        
-        TweenMax.to($('.bgimg'), 1, {
-          top: t + "%",
-          left: l + "%"
-        });
-        
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>journal 001</title>
+
+  <style>
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --muted: #666;
+      --maxw: 900px;
+      --g: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "IBM Plex Mono", monospace;
+      line-height: 1.5;
+    }
+
+    img { width: 100%; display: block; }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+    h1 { font-size: 22px; margin: 5px 0; }
+    .sub { font-size: 12px; color: var(--muted); }
+    .day { display: inline-block; border: 1px solid #000; padding: 3px 8px; font-size: 11px; margin-top: 6px; }
+
+    main {
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 20px;
+    }
+
+    .spread { margin-bottom: 50px; }
+
+    .spread--diptych,
+    .spread--stack {
+      display: grid;
+      gap: var(--g);
+    }
+
+    @media (min-width: 768px) {
+      .spread--diptych,
+      .spread--stack {
+        grid-template-columns: 1fr 1fr;
       }
+    }
 
-      window.addEventListener("mousemove", touches);
-      window.addEventListener("touchstart", touches);
-      window.addEventListener("touchmove", touches);
+    figcaption {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
 
-    </script>
-    <title> 001 </title>
-    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
-	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	
-	<!-- This site is optimized with the Yoast SEO plugin v25.9 - https://yoast.com/wordpress/plugins/seo/ -->
-	<link rel="canonical" href="https://martacazalla.com/lisasinson-no-se-muy-bien/" />
-	<meta property="og:locale" content="es_ES" />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="001" />
-	<meta property="og:url" content="https://martacazalla.com/lisasinson-no-se-muy-bien/" />
-	<meta property="og:site_name" content="Marta Cazalla" />
-	<meta property="article:modified_time" content="2023-01-12T13:08:23+00:00" />
-	<meta property="og:image" content="https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1-1024x617.jpg" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:label1" content="Tiempo de lectura" />
-	<meta name="twitter:data1" content="3 minutos" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://martacazalla.com/lisasinson-no-se-muy-bien/","url":"https://martacazalla.com/lisasinson-no-se-muy-bien/","name":"Lisasinson - No sé muy bien - Marta Cazalla","isPartOf":{"@id":"https://martacazalla.com/#website"},"primaryImageOfPage":{"@id":"https://martacazalla.com/lisasinson-no-se-muy-bien/#primaryimage"},"image":{"@id":"https://martacazalla.com/lisasinson-no-se-muy-bien/#primaryimage"},"thumbnailUrl":"https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1-1024x617.jpg","datePublished":"2022-12-29T13:39:46+00:00","dateModified":"2023-01-12T13:08:23+00:00","breadcrumb":{"@id":"https://martacazalla.com/lisasinson-no-se-muy-bien/#breadcrumb"},"inLanguage":"es","potentialAction":[{"@type":"ReadAction","target":["https://martacazalla.com/lisasinson-no-se-muy-bien/"]}]},{"@type":"ImageObject","inLanguage":"es","@id":"https://martacazalla.com/lisasinson-no-se-muy-bien/#primaryimage","url":"https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1.jpg","contentUrl":"https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1.jpg","width":1793,"height":1080},{"@type":"BreadcrumbList","@id":"https://martacazalla.com/lisasinson-no-se-muy-bien/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Portada","item":"https://martacazalla.com/"},{"@type":"ListItem","position":2,"name":"Lisasinson &#8211; No sé muy bien"}]},{"@type":"WebSite","@id":"https://martacazalla.com/#website","url":"https://martacazalla.com/","name":"Marta Cazalla","description":"ART DIRECTION &amp; SET DESIGN","publisher":{"@id":"https://martacazalla.com/#/schema/person/94f3aa3025d2f7fbf7a2cce0699fa984"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://martacazalla.com/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"es"},{"@type":["Person","Organization"],"@id":"https://martacazalla.com/#/schema/person/94f3aa3025d2f7fbf7a2cce0699fa984","name":"Marta Cazalla","image":{"@type":"ImageObject","inLanguage":"es","@id":"https://martacazalla.com/#/schema/person/image/","url":"https://martacazalla.com/wp-content/uploads/2022/12/flores.png","contentUrl":"https://martacazalla.com/wp-content/uploads/2022/12/flores.png","width":425,"height":425,"caption":"Marta Cazalla"},"logo":{"@id":"https://martacazalla.com/#/schema/person/image/"},"sameAs":["https://www.instagram.com/mrta_____/"]}]}</script>
-	<!-- / Yoast SEO plugin. -->
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      border-top: 1px solid #eee;
+    }
+
+    /* === Collage tipo “dos fotos superpuestas” (mobile-first) === */
+    .collage-feet{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;         /* cambia a 16/9 si quieres más panorámico */
+      background: #fff;
+    }
+    .collage-feet::before{
+      content: "";
+      position: absolute;
+      background-image: var(--src1); /* la misma imagen para ambas “láminas” */
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      border: 10px solid #fff;      /* marco blanco tipo papel */
+      will-change: transform;
+    }
+    .collage-feet::after{
+      content: "";
+      position: absolute;
+      background-image: var(--src2); /* la misma imagen para ambas “láminas” */
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      border: 10px solid #fff;      /* marco blanco tipo papel */
+      will-change: transform;
+    }
+    /* Lámina grande (abajo-izquierda) */
+    .collage-feet::before{
+      left: 0;
+      bottom: 0;
+      width: 78%;
+      height: 78%;
+      background-position: var(--pos1, 35% 70%); /* ajusta encuadre */
+      transform: rotate(-2.2deg);
+    }
+    /* Lámina pequeña (arriba-derecha) */
+    .collage-feet::after{
+      right: 0;
+      top: 6%;
+      width: 58%;
+      height: 58%;
+      background-position: var(--pos2, 70% 45%); /* ajusta encuadre */
+      transform: rotate(2.6deg);
+    }
+    @media (min-width: 768px){
+      .collage-feet{ aspect-ratio: 16 / 9; }
+      .collage-feet::before{ width: 72%; height: 78%; }
+      .collage-feet::after{  width: 50%; height: 56%; top: 8%; }
+    }
+
+    /* ===== Texto + Imagen siempre lado a lado ===== */
+.spread--text-image{
+  display: grid;
+  align-items: start;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr; /* mitad texto / mitad imagen */
+}
+
+.poem{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+               "Courier New", monospace;
+  /*text-transform: uppercase;*/
+  letter-spacing: .06em;
+  line-height: 1.6;
+  font-size: 12px;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+}
+
+.poem .scene{
+  display:block;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.ti-figure{
+  background:#fff;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+.ti-figure img{
+  width: 100%;
+  display: block;
+ /* filter: grayscale(100%) contrast(95%) brightness(110%);
+  opacity: .85;*/
+}
+
+/* Ajustes en pantallas grandes: más aire, tipografía más grande */
+@media (min-width: 768px){
+  .spread--text-image{
+    gap: 40px;
+    grid-template-columns: 1.05fr 1.4fr;
+  }
+  .poem{
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+/* ===== Texto + columna de 2 imágenes apiladas ===== */
+.spread--text-side-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* texto / columna de imágenes */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Columna de imágenes apiladas */
+.ti-images {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Imagen con efecto editorial */
+.ti-figure {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+.ti-figure img {
+  width: 100%;
+  display: block;
+ /* filter: grayscale(100%) contrast(95%) brightness(110%);*/
+  opacity: 0.85;
+}
+
+/* Texto estilo máquina */
+.poem {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+               "Courier New", monospace;
+/*  text-transform: uppercase;*/
+  letter-spacing: .06em;
+  line-height: 1.6;
+  font-size: 13px;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+}
+.poem .scene {
+  display: block;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .spread--text-side-stack {
+    grid-template-columns: 1.1fr 1fr; /* texto ligeramente más ancho */
+    gap: 14px;
+  }
+}
+
+@media (max-width: 540px) {
+  /* En pantallas pequeñas, texto arriba y columna de imágenes debajo */
+  .spread--text-side-stack {
+    grid-template-columns: 1fr;
+  }
+
+  /* 👇 mantiene las imágenes apiladas verticalmente */
+  .ti-images {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ti-figure {
+    padding: 8px;
+  }
+}
 
 
-<link rel='dns-prefetch' href='//player.vimeo.com' />
-<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
-<link rel='dns-prefetch' href='//api.fontshare.com' />
-<link rel='dns-prefetch' href='//fonts.googleapis.com' />
-<script type="text/javascript">
-/* <![CDATA[ */
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/martacazalla.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.8.2"}};
-/*! This file is auto-generated */
-!function(s,n){var o,i,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),a=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===a[t]})}function u(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);for(var n=e.getImageData(16,16,1,1),a=0;a<n.data.length;a++)if(0!==n.data[a])return!1;return!0}function f(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\udedf")}return!1}function g(e,t,n,a){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):s.createElement("canvas"),o=r.getContext("2d",{willReadFrequently:!0}),i=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(function(e){i[e]=t(o,e,n,a)}),i}function t(e){var t=s.createElement("script");t.src=e,t.defer=!0,s.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",i=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){s.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+g.toString()+"("+[JSON.stringify(i),f.toString(),p.toString(),u.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"}),r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=function(e){c(n=e.data),r.terminate(),t(n)})}catch(e){}c(n=g(i,f,p,u))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
-/* ]]> */
-</script>
-<link rel='stylesheet' id='jquery.prettyphoto-css' href='https://martacazalla.com/wp-content/plugins/wp-video-lightbox/css/prettyPhoto.css?ver=6.8.2' type='text/css' media='all' />
-<link rel='stylesheet' id='video-lightbox-css' href='https://martacazalla.com/wp-content/plugins/wp-video-lightbox/wp-video-lightbox.css?ver=6.8.2' type='text/css' media='all' />
-<link rel='stylesheet' id='vimeo-for-wordpress-public-css' href='https://martacazalla.com/wp-content/plugins/vimeo/build/style-index.css?ver=1.2.2' type='text/css' media='all' />
-<style id='wp-emoji-styles-inline-css' type='text/css'>
 
-	img.wp-smiley, img.emoji {
-		display: inline !important;
-		border: none !important;
-		box-shadow: none !important;
-		height: 1em !important;
-		width: 1em !important;
-		margin: 0 0.07em !important;
-		vertical-align: -0.1em !important;
-		background: none !important;
-		padding: 0 !important;
-	}
-</style>
-<link rel='stylesheet' id='wp-block-library-css' href='https://martacazalla.com/wp-content/plugins/gutenberg/build/block-library/style.css?ver=21.6.0' type='text/css' media='all' />
-<style id='classic-theme-styles-inline-css' type='text/css'>
-/*! This file is auto-generated */
-.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
-</style>
-<style id='global-styles-inline-css' type='text/css'>
-:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
-:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
-:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
-:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
-</style>
-<link rel='stylesheet' id='satoshi-css' href='https://api.fontshare.com/css?f%5B0%5D=satoshi%40400%2C401&#038;display=swap&#038;ver=6.8.2' type='text/css' media='all' />
-<link rel='stylesheet' id='Inter-css' href='https://fonts.googleapis.com/css2?family=Work+Sans%3Aital%401&#038;display=swap&#038;ver=6.8.2' type='text/css' media='all' />
-<link rel='stylesheet' id='css-css' href='https://martacazalla.com/wp-content/themes/martatheme/style.css?ver=6.8.2' type='text/css' media='all' />
-<style id='kadence-blocks-global-variables-inline-css' type='text/css'>
-:root {--global-kb-font-size-sm:clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem);--global-kb-font-size-md:clamp(1.1rem, 0.995rem + 0.326vw, 1.25rem);--global-kb-font-size-lg:clamp(1.75rem, 1.576rem + 0.543vw, 2rem);--global-kb-font-size-xl:clamp(2.25rem, 1.728rem + 1.63vw, 3rem);--global-kb-font-size-xxl:clamp(2.5rem, 1.456rem + 3.26vw, 4rem);--global-kb-font-size-xxxl:clamp(2.75rem, 0.489rem + 7.065vw, 6rem);}:root {--global-palette1: #3182CE;--global-palette2: #2B6CB0;--global-palette3: #1A202C;--global-palette4: #2D3748;--global-palette5: #4A5568;--global-palette6: #718096;--global-palette7: #EDF2F7;--global-palette8: #F7FAFC;--global-palette9: #ffffff;}
-</style>
-<script type="text/javascript" src="https://martacazalla.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
-<script type="text/javascript" src="https://martacazalla.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
-<script type="text/javascript" src="https://martacazalla.com/wp-content/plugins/wp-video-lightbox/js/jquery.prettyPhoto.js?ver=3.1.6" id="jquery.prettyphoto-js"></script>
-<script type="text/javascript" id="video-lightbox-js-extra">
-/* <![CDATA[ */
-var vlpp_vars = {"prettyPhoto_rel":"wp-video-lightbox","animation_speed":"fast","slideshow":"5000","autoplay_slideshow":"false","opacity":"0.8","show_title":"true","allow_resize":"true","allow_expand":"true","default_width":"640","default_height":"480","counter_separator_label":"\/","theme":"light_rounded","horizontal_padding":"20","hideflash":"false","wmode":"opaque","autoplay":"false","modal":"false","deeplinking":"false","overlay_gallery":"true","overlay_gallery_max":"30","keyboard_shortcuts":"true","ie6_fallback":"true"};
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://martacazalla.com/wp-content/plugins/wp-video-lightbox/js/video-lightbox.js?ver=3.1.6" id="video-lightbox-js"></script>
-<script type="text/javascript" src="https://player.vimeo.com/api/player.js?ver=1.2.2" id="vimeo-for-wordpress-player-js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js?ver=6.8.2" id="twinmax-js"></script>
-<script type="text/javascript" src="https://martacazalla.com/wp-content/themes/martatheme/index.js?ver=6.8.2" id="scripts-js"></script>
-<link rel="https://api.w.org/" href="https://martacazalla.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://martacazalla.com/wp-json/wp/v2/pages/185" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://martacazalla.com/xmlrpc.php?rsd" />
-<meta name="generator" content="WordPress 6.8.2" />
-<link rel='shortlink' href='https://martacazalla.com/?p=185' />
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://martacazalla.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmartacazalla.com%2Flisasinson-no-se-muy-bien%2F" />
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://martacazalla.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmartacazalla.com%2Flisasinson-no-se-muy-bien%2F&#038;format=xml" />
-<script>
-            WP_VIDEO_LIGHTBOX_VERSION="1.9.12";
-            WP_VID_LIGHTBOX_URL="https://martacazalla.com/wp-content/plugins/wp-video-lightbox";
-                        function wpvl_paramReplace(name, string, value) {
-                // Find the param with regex
-                // Grab the first character in the returned string (should be ? or &)
-                // Replace our href string with our new value, passing on the name and delimeter
+/* === Contact sheet (izq) + 2 imágenes apiladas (der) === */
+.spread--contact-vs-stack{
+  display:grid;
+  grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+  gap: 28px;
+  align-items:start;
+}
 
-                var re = new RegExp("[\?&]" + name + "=([^&#]*)");
-                var matches = re.exec(string);
-                var newString;
+/* Marco editorial blanco */
+.frame{
+  background:#fff;
+  padding:12px;            /* grosor del borde blanco */
+  border:1px solid #eee;
+}
 
-                if (matches === null) {
-                    // if there are no params, append the parameter
-                    newString = string + '?' + name + '=' + value;
-                } else {
-                    var delimeter = matches[0].charAt(0);
-                    newString = string.replace(re, delimeter + name + "=" + value);
-                }
-                return newString;
-            }
-            </script><link rel="icon" href="https://martacazalla.com/wp-content/uploads/2023/01/cropped-3-1-32x32.png" sizes="32x32" />
-<link rel="icon" href="https://martacazalla.com/wp-content/uploads/2023/01/cropped-3-1-192x192.png" sizes="192x192" />
-<link rel="apple-touch-icon" href="https://martacazalla.com/wp-content/uploads/2023/01/cropped-3-1-180x180.png" />
-<meta name="msapplication-TileImage" content="https://martacazalla.com/wp-content/uploads/2023/01/cropped-3-1-270x270.png" />
+/* === Una imagen alta (izquierda) + dos apiladas (derecha) === */
+.spread--tall-vs-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+  gap: 24px;
+  align-items: stretch; /* iguala las alturas */
+}
+
+/* Columna derecha con dos imágenes apiladas */
+.stack2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Imágenes con borde blanco tipo editorial */
+.frame {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #eee;
+  display: flex;
+}
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* La imagen alta ocupará el alto total de la columna derecha */
+.tall-image {
+  display: flex;
+}
+.tall-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .spread--tall-vs-stack {
+    grid-template-columns: 1fr;
+  }
+  .stack2 {
+    flex-direction: row;
+  }
+  .stack2 figure {
+    flex: 1;
+  }
+}
+.figure-small img {
+  width: 30%;          /* la reduce al 50% del ancho normal */
+  margin: 0 auto;      /* la centra horizontalmente */
+  display: block;
+}
+.figure-small figcaption {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* === Izquierda: 1 imagen | Derecha: imagen + caption
+   La izquierda iguala la altura total de la derecha (imagen + texto) === */
+   .spread--sync-height{
+  display:grid;
+  grid-template-columns: 1fr 1fr;   /* izquierda / derecha */
+  grid-template-rows: auto auto;    /* fila1: imagen der | fila2: caption der */
+  column-gap: 36px;
+  row-gap: 14px;                    /* se suma a la altura total de la derecha */
+  align-items: stretch;
+}
+
+/* Izquierda ocupa ambas filas => iguala altura de (img der + caption) */
+.sync-left{
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display:flex;                     /* permite que el <img> llene la altura */
+  background:#fff;
+  padding:12px;                     /* marco blanco */
+  border:1px solid #eee;
+}
+.sync-left img{
+  width:100%;
+  height:100%;
+  object-fit: cover;                /* recorte elegante sin deformar */
+  display:block;
+}
+
+/* Derecha: foto en fila 1, caption en fila 2 */
+.sync-right-photo{
+  grid-column: 2;
+  grid-row: 1;
+  background:#fff;
+  padding:12px;
+  border:1px solid #eee;
+}
+.sync-right-photo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.sync-right-caption{
+  grid-column: 2;
+  grid-row: 2;
+  margin:0;                         /* quita margen default de figcaption/p */
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing:.06em;
+  line-height:1.6;
+  font-size:12px;
+  color:#2a2a2a;
+  white-space:pre-wrap;             /* respeta saltos de línea */
+}
+
+/* Ajustes finos para pantallas pequeñas, manteniendo 2 columnas */
+@media (max-width: 600px){
+  .spread--sync-height{
+    column-gap: 16px;
+    row-gap: 10px;
+  }
+  .sync-left, .sync-right-photo{ padding:8px; }
+  .sync-right-caption{ font-size:11px; line-height:1.55; }
+}
+
+/* === Izquierda grande + Derecha (imagen+caption) + imagen pequeña superpuesta === */
+.spread--overlay-2col{
+  position: relative;            /* para posicionar la superpuesta */
+  display: grid;
+  gap: var(--gap, 28px);
+  /* Mobile-first: 1 columna (no se rompe en iPhone) */
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+/* Proporciones elásticas (no 50/50 fijo) */
+@media (min-width: 560px){
+  /* ~58/42 */
+  .spread--overlay-2col{ grid-template-columns: 1.4fr 1fr; }
+}
+@media (min-width: 900px){
+  /* ~62/38 */
+  .spread--overlay-2col{ grid-template-columns: 1.6fr 1fr; }
+}
+
+/* Marco zine */
+.frame{ background:#fff; padding:12px; border:1px solid #eee; }
+.frame img{ width:100%; height:auto; object-fit:cover; display:block; }
+
+/* Bloque derecho: imagen + 1 línea */
+.one-line{
+  font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono","Courier New", monospace;
+  text-transform:uppercase; letter-spacing:.06em;
+  font-size:12px; color:#2a2a2a; margin-top:10px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Imagen pequeña superpuesta centrada sobre todo el spread */
+.mid-overlay{
+  position:absolute; z-index:5; left:50%; transform:translateX(-50%);
+  top: var(--overlay-top, -6%);                /* mueve verticalmente */
+  width: clamp(160px, 36vw, 520px);            /* tamaño fluido */
+  pointer-events:none;
+}
+.mid-overlay .frame{ padding:10px; }
+.mid-overlay img{ width:100%; height:auto; display:block; }
+
+/* Reservar algo de espacio si en mobile la superpuesta pisa el contenido */
+.spread--overlay-2col{ padding-top: var(--overlay-reserve, 0px); }
+
+@media (max-width: 480px){
+  .spread--overlay-2col{ --gap: 16px; }
+  .mid-overlay{
+    top: var(--overlay-top-mobile, -10%);      /* ajusta para iPhone */
+    width: clamp(140px, 58vw, 420px);
+  }
+  .one-line{ font-size:11px; }
+}
+
+
+  </style>
 </head>
-<body data-rsssl=1 class="wp-singular page-template-default page page-id-185 wp-theme-martatheme">
-<header>
-  <nav>
-    <div class="nav__top">
-            <a class="nav__item nav-top text-left" href="https://martacazalla.com"> <h2> Marta Cazalla </h2> </a> 
-      <a class="nav__item nav-top text-center" href="https://martacazalla.com"><h3> archives </h3></a>
-      <a class="nav__item nav-top nav__display pr" href="https://martacazalla.com/about">about</a>
-      <a class="nav__item nav__mobile" href="https://martacazalla.com/proyectos">+</a>
+
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <div class="kicker">journal 001</div>
+    <p>ssstufff hoodie</p>
+    <span class="day">001</span>
+  </div>
+</header>
+
+<main>
+    <section class="spread spread--single">
+        <figure class="figure-small">
+          <img src="./images/001.png" alt="">
+      
+        </figure>
+      </section>    
+
+      <section class="spread spread--text-image side-by-side">
+        <div class="ti-text">
+          <div class="poem">
+            <span class="scene">SCENE 1. the inspo to share</span>
+      when i read this book for the first time
+      it really changed my mind
+      i started to think more about the process 
+      rather than the product
+      because, at the end of the day, its about the journey
+
+      "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
+      
+      share what you love, and the people who love, and the people who love the same things will find you."
+          </div>
+        </div>
+      
+        <div class="ti-images">
+            <figure class="ti-figure">
+              <img src="./001/1.jpg" alt="Upper image">
+            </figure>
+            <figure class="ti-figure">
+              <img src="./001/7.jpg" alt="Lower image">
+            </figure>
+          </div>
+      </section>
+
+  <!-- Collage de una sola imagen (reemplaza el spread--collage anterior) -->
+  <!-- Cambia la ruta en url(...) por tu imagen. Ajusta --pos1 y --pos2 para el encuadre. -->
+  <section class="spread">
+    <!-- OPCIONAL: selector de imagen para probar al vuelo -->
+
+    <div id="collage"
+         class="collage-feet"
+         style="
+           --src1: url('./001/8.jpg');
+           --src2: url('./001/9.jpg');
+           --pos1: 35% 70%;
+           --pos2: 70% 45%;
+         ">
     </div>
-    <a class="nav__item nav__bottom-links-proyectos nav__display" href="https://martacazalla.com/proyectos">work</a>
-    <a class="nav__item nav__bottom-links-contact nav__display pr" href="https://martacazalla.com/contacto">contact</a>
-  </nav>
-</header> 
-<section class="page__container">
-    <h1 class="page__title">001</h1>
-    <div class="page__content">
-    
-      <!--
-<figure class="wp-block-vimeo-create vimeo-create__video-container"><div style="width:100%"><iframe class="vimeo-core-video" loading="lazy" src="https://player.vimeo.com/video/693894721?autopause=true&amp;autoplay=true&amp;background=false&amp;byline=false&amp;controls=true&amp;dnt=true&amp;loop=true&amp;muted=false&amp;pip=false&amp;playsinline=true&amp;portrait=false&amp;responsive=true&amp;speed=false&amp;title=false&amp;transparent=false" width="1792" height="1080" frameborder="0" allowfullscreen title="Lisasinson- No sé muy bien" style="max-width:100%;width:100%;height:100%;aspect-ratio:1792 / 1080"></iframe></div></figure>
+  </section>
+
+  <section class="spread spread--postcard">
+    <figure>
+      <img src="./001/3.jpg" alt="">
+      <figcaption>YOU MEET LARRY DOWN THE PATH.</figcaption>
+    </figure>
+  </section>
+
+  <section class="spread spread--single">
+    <figure><img src="./001/4.jpg" alt=""></figure>
+  </section>
+
+  <section class="spread spread--bleed">
+    <img src="./001/5.jpg" alt="">
+  </section>
+
+  <section class="spread spread--diptych">
+    <figure><img src="assets/66712141-DCD6-422A-8FAF-F6B2A238FAE4.jpeg" alt=""></figure>
+    <figure><img src="assets/04A4B3B2-86A1-42D5-A320-F982BD08A71C.jpeg" alt=""></figure>
+  </section>
+
+  <section class="spread spread--stack">
+    <figure><img src="assets/3F414E83-951A-4590-A3C1-17ED5680FB91.jpeg" alt=""></figure>
+    <figure><img src="assets/5F48682D-8438-4EA4-801F-65BA5BCFD872.jpeg" alt=""></figure>
+  </section>
 
 
-
-<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1-1024x617.jpg" alt="" class="wp-image-186" srcset="https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/3.42.1_3.42.1-1.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/3.10.1_3.10.1-1024x617.jpg" alt="" class="wp-image-187" srcset="https://martacazalla.com/wp-content/uploads/2022/12/3.10.1_3.10.1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/3.10.1_3.10.1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/3.10.1_3.10.1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/3.10.1_3.10.1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/3.10.1_3.10.1.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/4.1.1_4.1.1-1024x617.jpg" alt="" class="wp-image-188" srcset="https://martacazalla.com/wp-content/uploads/2022/12/4.1.1_4.1.1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/4.1.1_4.1.1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/4.1.1_4.1.1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/4.1.1_4.1.1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/4.1.1_4.1.1.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/3.13.1_3.13.1-copia-1024x617.jpg" alt="" class="wp-image-189" srcset="https://martacazalla.com/wp-content/uploads/2022/12/3.13.1_3.13.1-copia-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/3.13.1_3.13.1-copia-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/3.13.1_3.13.1-copia-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/3.13.1_3.13.1-copia-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/3.13.1_3.13.1-copia.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/2.5.1_2.5.1-1024x617.jpg" alt="" class="wp-image-190" srcset="https://martacazalla.com/wp-content/uploads/2022/12/2.5.1_2.5.1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/2.5.1_2.5.1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/2.5.1_2.5.1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/2.5.1_2.5.1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/2.5.1_2.5.1.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/4.8.1_4.8.1-1-1024x617.jpg" alt="" class="wp-image-191" srcset="https://martacazalla.com/wp-content/uploads/2022/12/4.8.1_4.8.1-1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/4.8.1_4.8.1-1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/4.8.1_4.8.1-1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/4.8.1_4.8.1-1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/4.8.1_4.8.1-1.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/3.3.1_3.3.1-1024x617.jpg" alt="" class="wp-image-192" srcset="https://martacazalla.com/wp-content/uploads/2022/12/3.3.1_3.3.1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/3.3.1_3.3.1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/3.3.1_3.3.1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/3.3.1_3.3.1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/3.3.1_3.3.1.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://martacazalla.com/wp-content/uploads/2022/12/4.7.1_4.7.1-1024x617.jpg" alt="" class="wp-image-193" srcset="https://martacazalla.com/wp-content/uploads/2022/12/4.7.1_4.7.1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/4.7.1_4.7.1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/4.7.1_4.7.1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/4.7.1_4.7.1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/4.7.1_4.7.1.jpg 1793w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<figure class="wp-block-image size-large is-resized"><img decoding="async" src="https://martacazalla.com/wp-content/uploads/2022/12/3.38.1_3.38.1-1-1024x617.jpg" alt="" class="wp-image-194" width="840" height="506" srcset="https://martacazalla.com/wp-content/uploads/2022/12/3.38.1_3.38.1-1-1024x617.jpg 1024w, https://martacazalla.com/wp-content/uploads/2022/12/3.38.1_3.38.1-1-300x181.jpg 300w, https://martacazalla.com/wp-content/uploads/2022/12/3.38.1_3.38.1-1-768x463.jpg 768w, https://martacazalla.com/wp-content/uploads/2022/12/3.38.1_3.38.1-1-1536x925.jpg 1536w, https://martacazalla.com/wp-content/uploads/2022/12/3.38.1_3.38.1-1.jpg 1793w" sizes="(max-width: 840px) 100vw, 840px" /><figcaption class="wp-element-caption"><br>Videoclip para Lisasinson. Directed by Miguel Yubero, Dop Jesús Ponce, Stylist Sara Beyler, Muah María Lara, Art direction Marta Cazalla.</figcaption></figure>
-
-    -->
-
-<p></p>
-
-
-
-<p></p>
-
-
-
-<style>
-.step { margin-top: 0.75rem; }
-.step-1 { margin-left: 0%; }
-.step-2 { margin-left: 18%; }
-.step-3 { margin-left: 42%; }
-.step-4 { margin-left: 68%; }
-.step-5 { margin-left: 42%; }
-.step-6 { margin-left: 18%; }
-@media (max-width: 700px) {
-  .step-2 { margin-left: 10%; }
-  .step-3 { margin-left: 22%; }
-  .step-4 { margin-left: 44%; }
-  .step-6 { margin-left: 10%; }
-}
-</style>
-
-<!--<style>
-.ig { width: min(90vw, 480px); aspect-ratio: 4 / 5; height: auto; object-fit: cover; object-position: center; display: block; }
-.wp-block-image.is-resized img.ig { width: min(90vw, 480px) !important; }
-@media (max-width: 700px) {
-  .ig { width: min(94vw, 420px); }
-}
-</style>-->
-
-<figure class="wp-block-image size-large margin-right step step-1"><img decoding="async" src="imgs/1.jpg" alt="" class="wp-image-195 ig" srcset="imgs/1.jpg 768w, imgs/1.jpg 225w, imgs/1.jpg 1152w, imgs/1.jpg 1536w, imgs/1.jpg 1920w" sizes="(max-width: 480px) 100vw, 480px" /></figure>
-
-<figure class="wp-block-image size-large margin-right step step-2"><img decoding="async" src="imgs/2.jpg" alt="" class="wp-image-196 ig" srcset="imgs/2.jpg 768w, imgs/2.jpg 225w, imgs/2.jpg 1152w, imgs/2.jpg 1536w, imgs/2.jpg 1920w" sizes="(max-width: 480px) 100vw, 480px" /></figure>
-
-<figure class="wp-block-image size-large margin-right step step-3"><img decoding="async" src="imgs/3.jpg" alt="" class="wp-image-197 ig" srcset="imgs/3.jpg 1024w, imgs/3.jpg 300w, imgs/3.jpg 150w, imgs/3.jpg 768w, imgs/3.jpg 1536w, imgs/3.jpg 2048w" sizes="(max-width: 480px) 100vw, 480px" /></figure>
-
-<figure class="wp-block-image size-large margin-right step step-4"><img decoding="async" src="imgs/4.jpg" alt="" class="wp-image-197 ig" srcset="imgs/4.jpg 1024w, imgs/4.jpg 300w, imgs/4.jpg 150w, imgs/4.jpg 768w, imgs/4.jpg 1536w, imgs/4.jpg 2048w" sizes="(max-width: 480px) 100vw, 480px" /></figure>
-
-<!--<figure class="wp-block-image size-large margin-right step step-4"><img decoding="async" src="imgs/4.jpg" alt="" class="wp-image-197 ig" srcset="imgs/4.jpg 1024w, imgs/4.jpg 300w, imgs/4.jpg 150w, imgs/4.jpg 768w, imgs/4.jpg 1536w, imgs/4.jpg 2048w" sizes="(max-width: 480px) 100vw, 480px" /></figure>-->
-
-<figure class="wp-block-image size-large is-resized step step-5"><img decoding="async" src="imgs/5.jpg" alt="" class="wp-image-397 ig" srcset="imgs/5.jpg 768w, imgs/5.jpg 225w, imgs/5.jpg 1152w, imgs/5.jpg 1536w, imgs/5.jpg 1920w" sizes="(max-width: 480px) 100vw, 480px" /></figure>
-
-<figure class="wp-block-image size-large is-resized step step-6"><img decoding="async" src="imgs/6.jpg" alt="" class="wp-image-397 ig" srcset="imgs/6.jpg 768w, imgs/6.jpg 225w, imgs/6.jpg 1152w, imgs/6.jpg 1536w, imgs/6.jpg 1920w" sizes="(max-width: 480px) 100vw, 480px" /></figure>
-
-
+  
+  <section class="spread spread--tall-vs-stack">
+    <figure class="frame tall-image">
+      <img src="./001/1.jpg" alt="Tall contact sheet image">
+    </figure>
+  
+    <div class="stack2">
+      <figure class="frame">
+        <img src="./001/2.jpg" alt="Tree and sky photo">
+      </figure>
+      <figure class="frame">
+        <img src="./001/3.jpg" alt="Yellow knit in interior">
+      </figure>
     </div>
+  </section>
+  
+  <section class="spread spread--sync-height">
+    <!-- Izquierda: imagen que debe igualar la suma (derecha img + texto) -->
+    <figure class="sync-left">
+      <img src="./001/3.jpg" alt="Foto izquierda alta">
+    </figure>
+  
+    <!-- Derecha: imagen -->
+    <figure class="sync-right-photo">
+      <img src="./001/4.jpg" alt="Foto derecha">
+    </figure>
+  
+    <!-- Derecha: caption debajo -->
+    <figcaption class="sync-right-caption">
+  14:22
+  SHORTLY AFTER SEEING A ‘YELLOW BREASTED BIRDIE’
+  I FELT AN URGE TO PUT A FULL ZINGI SUIT ON.
+  
+  G07G NONNA PANTS, G02T NONNA TUBE SKIRT IN ZINGI FOR —
+  • DANCING IN THE SUN
+  • PAINTING IN THE DINING ROOM
+  • BURSTS OF INSPIRATION IN THE STUDIO.
+    </figcaption>
+  </section>
+
+  <section class="spread spread--overlay-2col"
+         style="--overlay-top:-5%; --overlay-top-mobile:-10%; --overlay-reserve:60px;">
+  <!-- IZQUIERDA: grande (ocupa más que la derecha, no 50/50 fijo) -->
+  <figure class="frame">
+    <img src="./001/1.jpg" alt="Imagen grande izquierda">
+  </figure>
+
+  <!-- DERECHA: imagen + caption de 1 línea -->
+  <div class="right-block">
+    <figure class="frame">
+      <img src="./001/2.jpg" alt="Imagen derecha">
+    </figure>
+    <div class="one-line">G090 • NONNA WARMERS [2-LIMBS] • ‘INDIGO’ SHIBORI</div>
+  </div>
+
+  <!-- SUPERPUESTA: centrada sobre ambas columnas -->
+  <div class="mid-overlay">
+    <figure class="frame">
+      <img src="./001/6.jpg" alt="Imagen pequeña superpuesta">
+    </figure>
+  </div>
 </section>
-<script type="speculationrules">
-{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/martatheme\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
-</script>
-<script type="text/javascript" src="https://martacazalla.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
-<script type="text/javascript" src="https://martacazalla.com/wp-content/plugins/vimeo/build/index.js?ver=075a52cf774c248d3c1753e0e3e5be8e" id="vimeo-for-wordpress-public-js"></script>
-    
-    </body>
 
-</html>  <!-- 
-    code and design by Maria Lara
-    2023
-   -->
+  
+  
+</main>
+
+<footer class="site-footer">
+  <p>© Desert Dance — Day 5</p>
+</footer>
+
+<!-- JS opcional: permite subir una imagen y aplicar el efecto sin tocar código -->
+<script>
+  const input = document.getElementById('pick');
+  const collage = document.getElementById('collage');
+  input.addEventListener('change', e => {
+    const file = e.target.files && e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
+    reader.readAsDataURL(file);
+  });
+</script>
+
+</body>
+</html>

@@ -376,6 +376,60 @@
   .sync-right-caption{ font-size:11px; line-height:1.55; }
 }
 
+/* === Izquierda grande + Derecha (imagen+caption) + imagen pequeña superpuesta === */
+.spread--overlay-2col{
+  position: relative;            /* para posicionar la superpuesta */
+  display: grid;
+  gap: var(--gap, 28px);
+  /* Mobile-first: 1 columna (no se rompe en iPhone) */
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+/* Proporciones elásticas (no 50/50 fijo) */
+@media (min-width: 560px){
+  /* ~58/42 */
+  .spread--overlay-2col{ grid-template-columns: 1.4fr 1fr; }
+}
+@media (min-width: 900px){
+  /* ~62/38 */
+  .spread--overlay-2col{ grid-template-columns: 1.6fr 1fr; }
+}
+
+/* Marco zine */
+.frame{ background:#fff; padding:12px; border:1px solid #eee; }
+.frame img{ width:100%; height:auto; object-fit:cover; display:block; }
+
+/* Bloque derecho: imagen + 1 línea */
+.one-line{
+  font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono","Courier New", monospace;
+  text-transform:uppercase; letter-spacing:.06em;
+  font-size:12px; color:#2a2a2a; margin-top:10px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Imagen pequeña superpuesta centrada sobre todo el spread */
+.mid-overlay{
+  position:absolute; z-index:5; left:50%; transform:translateX(-50%);
+  top: var(--overlay-top, -6%);                /* mueve verticalmente */
+  width: clamp(160px, 36vw, 520px);            /* tamaño fluido */
+  pointer-events:none;
+}
+.mid-overlay .frame{ padding:10px; }
+.mid-overlay img{ width:100%; height:auto; display:block; }
+
+/* Reservar algo de espacio si en mobile la superpuesta pisa el contenido */
+.spread--overlay-2col{ padding-top: var(--overlay-reserve, 0px); }
+
+@media (max-width: 480px){
+  .spread--overlay-2col{ --gap: 16px; }
+  .mid-overlay{
+    top: var(--overlay-top-mobile, -10%);      /* ajusta para iPhone */
+    width: clamp(140px, 58vw, 420px);
+  }
+  .one-line{ font-size:11px; }
+}
+
 
   </style>
 </head>
@@ -514,7 +568,30 @@
   • BURSTS OF INSPIRATION IN THE STUDIO.
     </figcaption>
   </section>
-  
+
+  <section class="spread spread--overlay-2col"
+         style="--overlay-top:-5%; --overlay-top-mobile:-10%; --overlay-reserve:60px;">
+  <!-- IZQUIERDA: grande (ocupa más que la derecha, no 50/50 fijo) -->
+  <figure class="frame">
+    <img src="./001/1.jpg" alt="Imagen grande izquierda">
+  </figure>
+
+  <!-- DERECHA: imagen + caption de 1 línea -->
+  <div class="right-block">
+    <figure class="frame">
+      <img src="./001/2.jpg" alt="Imagen derecha">
+    </figure>
+    <div class="one-line">G090 • NONNA WARMERS [2-LIMBS] • ‘INDIGO’ SHIBORI</div>
+  </div>
+
+  <!-- SUPERPUESTA: centrada sobre ambas columnas -->
+  <div class="mid-overlay">
+    <figure class="frame">
+      <img src="./001/6.jpg" alt="Imagen pequeña superpuesta">
+    </figure>
+  </div>
+</section>
+
   
   
 </main>
