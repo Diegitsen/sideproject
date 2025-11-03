@@ -88,6 +88,7 @@
       border: 10px solid #fff;      /* marco blanco tipo papel */
       will-change: transform;
     }
+
     .collage-feet::after{
       content: "";
       position: absolute;
@@ -439,6 +440,44 @@
   .one-line{ font-size:11px; }
 }
 
+/* === Imagen grande con imagen pequeña superpuesta en el borde superior-centro === */
+.spread--overlay-top-center{
+  position: relative;             /* para posicionar la mini */
+}
+
+/* Reusa tu “marco” editorial si ya lo tienes */
+.frame{
+  background:#fff;
+  padding:12px;
+  border:1px solid #eee;
+}
+.frame img{ width:100%; display:block; object-fit:cover; }
+
+/* La imagen grande */
+
+
+/* La imagen pequeña superpuesta */
+.small-overlay{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--overlay-shift, -40%));
+  top: 0;                         /* anclada al borde superior */
+  z-index: 5;
+  width: var(--overlay-w, clamp(140px, 42vw, 420px)); /* tamaño fluido */
+  pointer-events: none;           /* que no bloquee toques/clics */
+}
+
+/* Bordes un poco más finos en la mini (opcional) */
+.small-overlay .frame{ padding:10px; }
+
+/* iPhone / pantallas estrechas */
+@media (max-width: 540px){
+  .small-overlay{
+    transform: translateX(-50%) translateY(var(--overlay-shift-mobile, -50%));
+    width: var(--overlay-w-mobile, clamp(120px, 60vw, 340px));
+  }
+}
+
 
   </style>
 </head>
@@ -592,7 +631,26 @@
   </div>
 </section>
 
-  
+<section class="spread spread--overlay-top-center"
+style="
+  --overlay-shift:-45%;          /* cuánto sobresale hacia arriba (desktop) */
+  --overlay-shift-mobile:-55%;   /* cuánto sobresale en iPhone */
+  --overlay-w:clamp(160px, 38vw, 460px);
+  --overlay-w-mobile:clamp(130px, 62vw, 340px);
+">
+<!-- Imagen grande -->
+<figure class="frame big-photo">
+<img src="./001/5.jpg" alt="Imagen grande">
+</figure>
+
+<!-- Imagen pequeña superpuesta arriba-centro -->
+<div class="small-overlay">
+<figure class="frame">
+<img src="./001/6.jpg" alt="Imagen pequeña superpuesta">
+</figure>
+</div>
+</section>
+
   
 </main>
 
