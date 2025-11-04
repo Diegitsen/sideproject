@@ -493,78 +493,6 @@
   }
 }
 
-/* === Izquierda: 2 imágenes apiladas | Derecha: 1 imagen + texto === */
-/* Mobile-first pero SIEMPRE dos columnas (también en iPhone) */
-.spread--left2-right-imgtext{
-  --gap: 24px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); /* columnas elásticas y seguras en iOS */
-  gap: var(--gap);
-  align-items: stretch;            /* iguala alturas de columnas */
-}
-
-/* iPhone y móviles estrechos: mantenemos 2 columnas, ajustamos proporción y gaps */
-@media (max-width: 540px){
-  .spread--left2-right-imgtext{
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); /* ~52/48 */
-    --gap: 14px;
-  }
-}
-
-/* ===== Columna izquierda: dos fotos apiladas ===== */
-.left-vert{
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  height: 100%;           /* ocupa toda la altura de la fila del grid */
-  min-height: 0;          /* FIX Safari iOS para hijos flex con overflow */
-}
-.left-vert figure{
-  flex: 1 1 0;            /* ambas fotos reparten la altura */
-  min-height: 0;          /* FIX Safari iOS */
-  overflow: hidden;
-}
-.left-vert img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;       /* recorte elegante */
-  display: block;
-}
-
-/* ===== Columna derecha: 1 imagen + texto ===== */
-.right-imgtext{
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-height: 0;          /* FIX Safari iOS */
-}
-.right-imgtext figure{
-  overflow: hidden;       /* evita desbordes en iOS */
-  min-height: 0;
-}
-.right-imgtext img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.caption-mono{
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-               "Liberation Mono","Courier New", monospace;
-  letter-spacing: .06em;
-  line-height: 1.7;
-  font-size: 12.5px;
-  color: #2a2a2a;
-  white-space: pre-wrap;
-}
-
-/* Tuning fino en iPhone */
-@media (max-width: 540px){
-  .left-vert{ gap: 12px; }
-  .caption-mono{ font-size: 12px; line-height: 1.6; }
-}
-
-
 
   </style>
 </head>
@@ -637,58 +565,27 @@
     </figure>
   </section>
 
-  <section class="spread spread--left2-right-imgtext" style="--ratio-left: 4 / 5;">
-    <!-- IZQUIERDA: dos imágenes apiladas -->
-    <div class="left-vert">
-      <figure>
-        <img src="./001/11.jpg" alt="Left top">
-      </figure>
-      <figure>
-        <img src="./001/12.jpg" alt="Left bottom">
-      </figure>
-    </div>
-  
-    <!-- DERECHA: imagen + texto -->
-    <div class="right-imgtext">
-      <figure>
-        <img src="./001/4.jpg" alt="Right image">
-      </figure>
-      <figcaption class="caption-mono">
-  14:22
-  i saw a lot of these type of eyes around the streets
-  when i was in a trip, for some reason those eyes
-  got my attention
-  
-  months later, it will be part of this journey
-  <!--<span class="dot">•</span> DANCING IN THE SUN
-  <span class="dot">•</span> PAINTING IN THE DINING ROOM
-  <span class="dot">•</span> BURSTS OF INSPIRATION IN THE STUDIO.-->
-      </figcaption>
-    </div>
-  </section>
-  
-
-  <!--<section class="spread spread--single">
+  <section class="spread spread--single">
     <figure><img src="./001/4.jpg" alt=""></figure>
-  </section>-->
+  </section>
 
- <!-- <section class="spread spread--bleed">
+  <section class="spread spread--bleed">
     <img src="./001/5.jpg" alt="">
-  </section> -->
+  </section>
 
-  <!--<section class="spread spread--diptych">
+  <section class="spread spread--diptych">
     <figure><img src="assets/66712141-DCD6-422A-8FAF-F6B2A238FAE4.jpeg" alt=""></figure>
     <figure><img src="assets/04A4B3B2-86A1-42D5-A320-F982BD08A71C.jpeg" alt=""></figure>
-  </section>-->
+  </section>
 
- <!-- <section class="spread spread--stack">
+  <section class="spread spread--stack">
     <figure><img src="assets/3F414E83-951A-4590-A3C1-17ED5680FB91.jpeg" alt=""></figure>
     <figure><img src="assets/5F48682D-8438-4EA4-801F-65BA5BCFD872.jpeg" alt=""></figure>
-  </section>-->
+  </section>
 
 
   
-  <!--<section class="spread spread--tall-vs-stack">
+  <section class="spread spread--tall-vs-stack">
     <figure class="frame tall-image">
       <img src="./001/1.jpg" alt="Tall contact sheet image">
     </figure>
@@ -701,17 +598,20 @@
         <img src="./001/3.jpg" alt="Yellow knit in interior">
       </figure>
     </div>
-  </section>-->
+  </section>
   
-  <!--<section class="spread spread--sync-height">
+  <section class="spread spread--sync-height">
+    <!-- Izquierda: imagen que debe igualar la suma (derecha img + texto) -->
     <figure class="sync-left">
       <img src="./001/3.jpg" alt="Foto izquierda alta">
     </figure>
   
+    <!-- Derecha: imagen -->
     <figure class="sync-right-photo">
       <img src="./001/4.jpg" alt="Foto derecha">
     </figure>
   
+    <!-- Derecha: caption debajo -->
     <figcaption class="sync-right-caption">
   14:22
   SHORTLY AFTER SEEING A ‘YELLOW BREASTED BIRDIE’
@@ -722,14 +622,16 @@
   • PAINTING IN THE DINING ROOM
   • BURSTS OF INSPIRATION IN THE STUDIO.
     </figcaption>
-  </section>-->
+  </section>
 
-  <!--<section class="spread spread--overlay-2col"
+  <section class="spread spread--overlay-2col"
          style="--overlay-top:-5%; --overlay-top-mobile:-10%; --overlay-reserve:60px;">
+  <!-- IZQUIERDA: grande (ocupa más que la derecha, no 50/50 fijo) -->
   <figure class="frame">
     <img src="./001/1.jpg" alt="Imagen grande izquierda">
   </figure>
 
+  <!-- DERECHA: imagen + caption de 1 línea -->
   <div class="right-block">
     <figure class="frame">
       <img src="./001/2.jpg" alt="Imagen derecha">
@@ -737,12 +639,13 @@
     <div class="one-line">G090 • NONNA WARMERS [2-LIMBS] • ‘INDIGO’ SHIBORI</div>
   </div>
 
+  <!-- SUPERPUESTA: centrada sobre ambas columnas -->
   <div class="mid-overlay">
     <figure class="frame">
       <img src="./001/6.jpg" alt="Imagen pequeña superpuesta">
     </figure>
   </div>
-</section>-->
+</section>
 
 <section class="spread spread--overlay-top-center"
 style="
@@ -767,9 +670,9 @@ style="
   
 </main>
 
-<!--<footer class="site-footer">
+<footer class="site-footer">
   <p>© Desert Dance — Day 5</p>
-</footer>-->
+</footer>
 
 <!-- JS opcional: permite subir una imagen y aplicar el efecto sin tocar código -->
 <script>
