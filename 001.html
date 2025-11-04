@@ -35,7 +35,7 @@
     .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
     h1 { font-size: 22px; margin: 5px 0; }
     .sub { font-size: 12px; color: var(--muted); }
-    .day { display: inline-block; border: 1px solid #000; padding: 3px 8px; font-size: 11px; margin-top: 6px; }
+    .day { display: inline-block; border: 0 solid #000; padding: 3px 8px; font-size: 11px; margin-top: 6px; }
 
     main {
       max-width: var(--maxw);
@@ -85,7 +85,7 @@
       background-size: cover;
       background-repeat: no-repeat;
       box-shadow: 0 10px 25px rgba(0,0,0,.12);
-      border: 10px solid #fff;      /* marco blanco tipo papel */
+      border: 0px solid #fff;      /* marco blanco tipo papel */
       will-change: transform;
     }
 
@@ -96,7 +96,7 @@
       background-size: cover;
       background-repeat: no-repeat;
       box-shadow: 0 10px 25px rgba(0,0,0,.12);
-      border: 10px solid #fff;      /* marco blanco tipo papel */
+      border: 0px solid #fff;      /* marco blanco tipo papel */
       will-change: transform;
     }
     /* Lámina grande (abajo-izquierda) */
@@ -152,7 +152,7 @@
 .ti-figure{
   background:#fff;
   padding: 10px;
-  border: 1px solid #eee;
+  border: 0px solid #eee;
 }
 .ti-figure img{
   width: 100%;
@@ -191,7 +191,7 @@
 .ti-figure {
   background: #fff;
   padding: 10px;
-  border: 1px solid #eee;
+  border: 0px solid #eee;
 }
 .ti-figure img {
   width: 100%;
@@ -255,9 +255,9 @@
 
 /* Marco editorial blanco */
 .frame{
-  background:#fff;
-  padding:12px;            /* grosor del borde blanco */
-  border:1px solid #eee;
+  background:none;
+  padding:0;
+  border:none;
 }
 
 /* === Una imagen alta (izquierda) + dos apiladas (derecha) === */
@@ -280,7 +280,7 @@
 .frame {
   background: #fff;
   padding: 10px;
-  border: 1px solid #eee;
+  border: 0px solid #eee;
   display: flex;
 }
 .frame img {
@@ -337,10 +337,10 @@
 .sync-left{
   grid-column: 1;
   grid-row: 1 / span 2;
-  display:flex;                     /* permite que el <img> llene la altura */
-  background:#fff;
-  padding:12px;                     /* marco blanco */
-  border:1px solid #eee;
+  display:flex;            
+  background:none;
+  padding:0;
+  border:none;
 }
 .sync-left img{
   width:100%;
@@ -352,10 +352,10 @@
 /* Derecha: foto en fila 1, caption en fila 2 */
 .sync-right-photo{
   grid-column: 2;
-  grid-row: 1;
-  background:#fff;
-  padding:12px;
-  border:1px solid #eee;
+  grid-row: 1;         
+  background:none;
+  padding:0;
+  border:none;
 }
 .sync-right-photo img{
   width:100%;
@@ -407,8 +407,17 @@
 }
 
 /* Marco zine */
-.frame{ background:#fff; padding:12px; border:1px solid #eee; }
-.frame img{ width:100%; height:auto; object-fit:cover; display:block; }
+.frame{          
+  background:none;
+  padding:0;
+  border:none; }
+
+.frame img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:block;
+}
 
 /* Bloque derecho: imagen + 1 línea */
 .one-line{
@@ -447,11 +456,17 @@
 
 /* Reusa tu “marco” editorial si ya lo tienes */
 .frame{
-  background:#fff;
-  padding:12px;
-  border:1px solid #eee;
+  background:none;
+  padding:0;
+  border:none;
 }
-.frame img{ width:100%; display:block; object-fit:cover; }
+
+.frame img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:block;
+}
 
 /* La imagen grande */
 
@@ -503,16 +518,16 @@
       <section class="spread spread--text-image side-by-side">
         <div class="ti-text">
           <div class="poem">
-            <span class="scene">SCENE 1. the inspo to share</span>
+            <span class="scene">the inspo to share</span>
       when i read this book for the first time
       it really changed my mind
       i started to think more about the process 
       rather than the product
       because, at the end of the day, its about the journey
 
-      "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
+    <!--  "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
       
-      share what you love, and the people who love, and the people who love the same things will find you."
+      share what you love, and the people who love, and the people who love the same things will find you."-->
           </div>
         </div>
       
