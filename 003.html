@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>journal 002</title>
+  <title>journal 003</title>
 
   <style>
     :root {
@@ -568,6 +568,57 @@
   .caption-mono{ font-size: 12px; line-height: 1.6; }
 }
 
+/* === Cuatro imágenes en grid 2x2 + caption debajo === */
+.spread--quad-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columnas fluidas */
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Mantiene proporciones limpias */
+.spread--quad-grid figure {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* ajusta a 1/1 si quieres cuadrado */
+  overflow: hidden;
+}
+.spread--quad-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption debajo de toda la cuadrícula */
+.spread--quad-grid-caption {
+  grid-column: 1 / -1; /* ocupa todo el ancho */
+ /* text-align: left;
+  margin-top: 4px;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono","Courier New", monospace;
+  text-transform: uppercase; 
+  letter-spacing: .06em;
+  line-height: 1.7;
+  font-size: 12.5px;
+  color: #2a2a2a;
+  white-space: pre-wrap;*/
+}
+
+/* Responsivo sin que se rompa en iPhone */
+@media (max-width: 540px) {
+  .spread--quad-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* mantiene 2 columnas */
+    gap: 10px;
+  }
+  .spread--quad-grid figure {
+    aspect-ratio: 3 / 4; /* un poco más alto en móvil */
+  }
+  .spread--quad-grid-caption {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
 
 
   </style>
@@ -577,85 +628,81 @@
 
 <header class="site-header">
   <div class="inner">
-    <div class="kicker">journal 002</div>
-    <p>fantastic mr. fox</p>
+    <div class="kicker">journal 003</div>
+    <p>polaroids x blazer</p>
   </div>
 </header>
 
 <main>
     <section class="spread spread--single">
         <figure class="figure-small">
-          <img src="./images/002.png" alt="">
+          <img src="./images/003.png" alt="">
       
         </figure>
       </section>   
       
       <section class="spread spread--postcard">
         <figure>
-          <img src="./002/1.jpg" alt="">
+          <img src="./003/1.jpg" alt="">
           <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption>
         </figure>
       </section>
-      
-       <!-- COMPONENT1 -->
-  <section class="spread spread--sync-height">
-    <!-- Izquierda: imagen que debe igualar la suma (derecha img + texto) -->
-    <figure class="sync-left">
-      <img src="./002/3.jpg" alt="Foto izquierda alta">
-    </figure>
-  
-    <!-- Derecha: imagen -->
-    <figure class="sync-right-photo">
-      <img src="./002/5.jpg" alt="Foto derecha">
-    </figure>
-  
-    <!-- Derecha: caption debajo -->
-    <figcaption class="sync-right-caption">
-  14:22
-  SHORTLY AFTER SEEING A ‘YELLOW BREASTED BIRDIE’
-  I FELT AN URGE TO PUT A FULL ZINGI SUIT ON.
-  
-  G07G NONNA PANTS, G02T NONNA TUBE SKIRT IN ZINGI FOR —
-  • DANCING IN THE SUN
-  • PAINTING IN THE DINING ROOM
-  • BURSTS OF INSPIRATION IN THE STUDIO.
-    </figcaption>
-  </section>
- <!-- COMPONENT1 -->
 
- <section class="spread spread--postcard">
-  <figure>
-    <img src="./002/2.jpg" alt="">
-    <figcaption>the room was a mess</figcaption>
-  </figure>
-</section>
-
-      <section class="spread spread--text-image side-by-side">
-        <div class="ti-text">
-          <div class="poem">
-            <span class="scene">the inspo to share</span>
-      when i read this book for the first time
-      it really changed my mind
-      i started to think more about the process 
-      rather than the product
-      because, at the end of the day, its about the journey
-
-    <!--  "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
+      <section class="spread spread--quad-grid">
+        <figure><img src="./003/2.jpg" alt="image1"></figure>
+        <figure><img src="./003/3.jpg" alt="image2"></figure>
+        <figure><img src="./003/4.jpg" alt="image3"></figure>
+        <figure><img src="./003/5.jpg" alt="image4"></figure>
+      <!--  <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption> -->
       
-      share what you love, and the people who love, and the people who love the same things will find you."-->
-          </div>
-        </div>
-      
-        <div class="ti-images">
-            <figure class="ti-figure">
-              <img src="./002/4.jpg" alt="Upper image">
-            </figure>
-          </div>
+       <figcaption class="spread--quad-grid-caption">
+        i tried to do like an storyboard to be aware on the filming side
+        </figcaption> 
+      </section>
+    
+      <section class="spread spread--postcard">
+        <figure>
+          <img src="./003/9.jpg" alt="">
+          <figcaption>the room was a mess</figcaption>
+        </figure>
       </section>
 
+      <section class="spread spread--left2-right-imgtext" style="--ratio-left: 4 / 5;">
+        <!-- IZQUIERDA: dos imágenes apiladas -->
+        <div class="left-vert">
+          <figure>
+            <img src="./003/6.jpg" alt="Left top">
+          </figure>
+          <figure>
+            <img src="./003/8.jpg" alt="Left bottom">
+          </figure>
+        </div>
+      
+        <!-- DERECHA: imagen + texto -->
+        <div class="right-imgtext">
+          <figure>
+            <img src="./003/7.jpg" alt="Right image">
+          </figure>
+          <figcaption class="caption-mono">1. tiza <br>2. behind <br>3. first look of how the polaroids will fit with the blazer
+          </figcaption>
+        </div>
+      </section>
 
-  
-  
+      <section class="spread">
+        <!-- OPCIONAL: selector de imagen para probar al vuelo -->
+    
+        <div id="collage"
+             class="collage-feet"
+             style="
+               --src1: url('./003/11.jpg');
+               --src2: url('./003/10.jpg');
+               --pos1: 45% 70%;
+               --pos2: 70% 45%;
+             ">
+        </div>
+        <figcaption>some inspos i found on pinterest:)</figcaption>
+      </section>
+        
 </main>
 <script>
   const input = document.getElementById('pick');
