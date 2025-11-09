@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>journal 004</title>
+
+  <style>
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --muted: #666;
+      --maxw: 900px;
+      --g: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "IBM Plex Mono", monospace;
+      line-height: 1.5;
+    }
+
+    img { width: 100%; display: block; }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .kicker { font-size: 12px; letter-spacing: 2px; color: var(--muted); }
+    h1 { font-size: 22px; margin: 5px 0; }
+    .sub { font-size: 12px; color: var(--muted); }
+    .day { display: inline-block; border: 0 solid #000; padding: 3px 8px; font-size: 11px; margin-top: 6px; }
+
+    main {
+      max-width: var(--maxw);
+      margin: auto;
+      padding: 20px;
+    }
+
+    .spread { margin-bottom: 50px; }
+
+    .spread--diptych,
+    .spread--stack {
+      display: grid;
+      gap: var(--g);
+    }
+
+    @media (min-width: 768px) {
+      .spread--diptych,
+      .spread--stack {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      border-top: 1px solid #eee;
+    }
+
+    /* === Collage tipo “dos fotos superpuestas” (mobile-first) === */
+    .collage-feet{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;         /* cambia a 16/9 si quieres más panorámico */
+      background: #fff;
+    }
+    .collage-feet::before{
+      content: "";
+      position: absolute;
+      background-image: var(--src1); /* la misma imagen para ambas “láminas” */
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      border: 0px solid #fff;      /* marco blanco tipo papel */
+      will-change: transform;
+    }
+
+    .collage-feet::after{
+      content: "";
+      position: absolute;
+      background-image: var(--src2); /* la misma imagen para ambas “láminas” */
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      border: 0px solid #fff;      /* marco blanco tipo papel */
+      will-change: transform;
+    }
+    /* Lámina grande (abajo-izquierda) */
+    .collage-feet::before{
+      left: 0;
+      bottom: 0;
+      width: 78%;
+      height: 78%;
+      background-position: var(--pos1, 35% 70%); /* ajusta encuadre */
+      transform: rotate(-2.2deg);
+    }
+    /* Lámina pequeña (arriba-derecha) */
+    .collage-feet::after{
+      right: 0;
+      top: 6%;
+      width: 58%;
+      height: 58%;
+      background-position: var(--pos2, 70% 45%); /* ajusta encuadre */
+      transform: rotate(2.6deg);
+    }
+    @media (min-width: 768px){
+      .collage-feet{ aspect-ratio: 16 / 9; }
+      .collage-feet::before{ width: 72%; height: 78%; }
+      .collage-feet::after{  width: 50%; height: 56%; top: 8%; }
+    }
+
+    /* ===== Texto + Imagen siempre lado a lado ===== */
+.spread--text-image{
+  display: grid;
+  align-items: stretch;  /* Cambiar de 'start' a 'stretch' */
+  gap: 16px;
+  grid-template-columns: 1fr 1fr; /* mitad texto / mitad imagen */
+}
+
+.poem{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+               "Courier New", monospace;
+  /*text-transform: uppercase;*/
+  letter-spacing: .06em;
+  line-height: 1.6;
+  font-size: 12px;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+}
+
+.poem .scene{
+  display:block;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.ti-figure{
+  background:#fff;
+  padding: 10px;
+  border: 0px solid #eee;
+  height: 100%;  /* Agregar esto */
+  display: flex;  /* Agregar esto */
+}
+.ti-figure img{
+  width: 100%;
+  height: 100%;  /* Cambiar de 'display: block' a esto */
+  object-fit: cover;  /* Agregar esto */
+  display: block;
+ /* filter: grayscale(100%) contrast(95%) brightness(110%);
+  opacity: .85;*/
+}
+
+/* Ajustes en pantallas grandes: más aire, tipografía más grande */
+@media (min-width: 768px){
+  .spread--text-image{
+    gap: 40px;
+    grid-template-columns: 1.05fr 1.4fr;
+  }
+  .poem{
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+/* ===== Texto + columna de 2 imágenes apiladas ===== */
+.spread--text-side-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* texto / columna de imágenes */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Columna de imágenes apiladas */
+.ti-images {
+  display: grid;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Imagen con efecto editorial */
+.ti-figure {
+  background: #fff;
+  padding: 10px;
+  border: 0px solid #eee;
+}
+.ti-figure img {
+  width: 100%;
+  display: block;
+ /* filter: grayscale(100%) contrast(95%) brightness(110%);
+  opacity: 0.85;*/
+}
+
+/* Texto estilo máquina */
+.poem {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+               "Courier New", monospace;
+/*  text-transform: uppercase;*/
+  letter-spacing: .06em;
+  line-height: 1.6;
+  font-size: 13px;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+}
+.poem .scene {
+  display: block;
+  margin-bottom: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .spread--text-side-stack {
+    grid-template-columns: 1.1fr 1fr; /* texto ligeramente más ancho */
+    gap: 14px;
+  }
+}
+
+@media (max-width: 540px) {
+  /* En pantallas pequeñas, texto arriba y columna de imágenes debajo */
+  .spread--text-side-stack {
+    grid-template-columns: 1fr;
+  }
+
+  /* 👇 mantiene las imágenes apiladas verticalmente */
+  .ti-images {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ti-figure {
+    padding: 8px;
+  }
+}
+
+
+
+/* === Contact sheet (izq) + 2 imágenes apiladas (der) === */
+.spread--contact-vs-stack{
+  display:grid;
+  grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+  gap: 28px;
+  align-items:start;
+}
+
+/* Marco editorial blanco */
+.frame{
+  background:none;
+  padding:0;
+  border:none;
+}
+
+/* === Una imagen alta (izquierda) + dos apiladas (derecha) === */
+.spread--tall-vs-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+  gap: 24px;
+  align-items: stretch; /* iguala las alturas */
+}
+
+/* Columna derecha con dos imágenes apiladas */
+.stack2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Imágenes con borde blanco tipo editorial */
+.frame {
+  background: #fff;
+  padding: 10px;
+  border: 0px solid #eee;
+  display: flex;
+}
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* La imagen alta ocupará el alto total de la columna derecha */
+.tall-image {
+  display: flex;
+}
+.tall-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .spread--tall-vs-stack {
+    grid-template-columns: 1fr;
+  }
+  .stack2 {
+    flex-direction: row;
+  }
+  .stack2 figure {
+    flex: 1;
+  }
+}
+.figure-small img {
+  width: 30%;          /* la reduce al 50% del ancho normal */
+  margin: 0 auto;      /* la centra horizontalmente */
+  display: block;
+}
+.figure-small figcaption {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* === Izquierda: 1 imagen | Derecha: imagen + caption
+   La izquierda iguala la altura total de la derecha (imagen + texto) === */
+   .spread--sync-height{
+  display:grid;
+  grid-template-columns: 1fr 1fr;   /* izquierda / derecha */
+  grid-template-rows: auto auto;    /* fila1: imagen der | fila2: caption der */
+  column-gap: 36px;
+  row-gap: 14px;                    /* se suma a la altura total de la derecha */
+  align-items: stretch;
+}
+
+/* Izquierda ocupa ambas filas => iguala altura de (img der + caption) */
+.sync-left{
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display:flex;            
+  background:none;
+  padding:0;
+  border:none;
+}
+.sync-left img{
+  width:100%;
+  height:100%;
+  object-fit: cover;                /* recorte elegante sin deformar */
+  display:block;
+}
+
+/* Derecha: foto en fila 1, caption en fila 2 */
+.sync-right-photo{
+  grid-column: 2;
+  grid-row: 1;         
+  background:none;
+  padding:0;
+  border:none;
+}
+.sync-right-photo img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.sync-right-caption{
+  grid-column: 2;
+  grid-row: 2;
+  margin:0;                         /* quita margen default de figcaption/p */
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing:.06em;
+  line-height:1.6;
+  font-size:12px;
+  color:#2a2a2a;
+  white-space:pre-wrap;             /* respeta saltos de línea */
+}
+
+/* Ajustes finos para pantallas pequeñas, manteniendo 2 columnas */
+@media (max-width: 600px){
+  .spread--sync-height{
+    column-gap: 16px;
+    row-gap: 10px;
+  }
+  .sync-left, .sync-right-photo{ padding:8px; }
+  .sync-right-caption{ font-size:11px; line-height:1.55; }
+}
+
+/* === Izquierda grande + Derecha (imagen+caption) + imagen pequeña superpuesta === */
+.spread--overlay-2col{
+  position: relative;            /* para posicionar la superpuesta */
+  display: grid;
+  gap: var(--gap, 28px);
+  /* Mobile-first: 1 columna (no se rompe en iPhone) */
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+/* Proporciones elásticas (no 50/50 fijo) */
+@media (min-width: 560px){
+  /* ~58/42 */
+  .spread--overlay-2col{ grid-template-columns: 1.4fr 1fr; }
+}
+@media (min-width: 900px){
+  /* ~62/38 */
+  .spread--overlay-2col{ grid-template-columns: 1.6fr 1fr; }
+}
+
+/* Marco zine */
+.frame{          
+  background:none;
+  padding:0;
+  border:none; }
+
+.frame img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:block;
+}
+
+/* Bloque derecho: imagen + 1 línea */
+.one-line{
+  font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono","Courier New", monospace;
+  text-transform:uppercase; letter-spacing:.06em;
+  font-size:12px; color:#2a2a2a; margin-top:10px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Imagen pequeña superpuesta centrada sobre todo el spread */
+.mid-overlay{
+  position:absolute; z-index:5; left:50%; transform:translateX(-50%);
+  top: var(--overlay-top, -6%);                /* mueve verticalmente */
+  width: clamp(160px, 36vw, 520px);            /* tamaño fluido */
+  pointer-events:none;
+}
+.mid-overlay .frame{ padding:10px; }
+.mid-overlay img{ width:100%; height:auto; display:block; }
+
+/* Reservar algo de espacio si en mobile la superpuesta pisa el contenido */
+.spread--overlay-2col{ padding-top: var(--overlay-reserve, 0px); }
+
+@media (max-width: 480px){
+  .spread--overlay-2col{ --gap: 16px; }
+  .mid-overlay{
+    top: var(--overlay-top-mobile, -10%);      /* ajusta para iPhone */
+    width: clamp(140px, 58vw, 420px);
+  }
+  .one-line{ font-size:11px; }
+}
+
+/* === Imagen grande con imagen pequeña superpuesta en el borde superior-centro === */
+.spread--overlay-top-center{
+  position: relative;             /* para posicionar la mini */
+}
+
+/* Reusa tu “marco” editorial si ya lo tienes */
+.frame{
+  background:none;
+  padding:0;
+  border:none;
+}
+
+.frame img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:block;
+}
+
+/* La imagen grande */
+
+
+/* La imagen pequeña superpuesta */
+.small-overlay{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--overlay-shift, -40%));
+  top: 0;                         /* anclada al borde superior */
+  z-index: 5;
+  width: var(--overlay-w, clamp(140px, 42vw, 420px)); /* tamaño fluido */
+  pointer-events: none;           /* que no bloquee toques/clics */
+}
+
+/* Bordes un poco más finos en la mini (opcional) */
+.small-overlay .frame{ padding:10px; }
+
+/* iPhone / pantallas estrechas */
+@media (max-width: 540px){
+  .small-overlay{
+    transform: translateX(-50%) translateY(var(--overlay-shift-mobile, -50%));
+    width: var(--overlay-w-mobile, clamp(120px, 60vw, 340px));
+  }
+}
+
+/* === Izquierda: 2 imágenes apiladas | Derecha: 1 imagen + texto === */
+/* Mobile-first pero SIEMPRE dos columnas (también en iPhone) */
+.spread--left2-right-imgtext{
+  --gap: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); /* columnas elásticas y seguras en iOS */
+  gap: var(--gap);
+  align-items: stretch;            /* iguala alturas de columnas */
+}
+
+/* iPhone y móviles estrechos: mantenemos 2 columnas, ajustamos proporción y gaps */
+@media (max-width: 540px){
+  .spread--left2-right-imgtext{
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); /* ~52/48 */
+    --gap: 14px;
+  }
+}
+
+/* ===== Columna izquierda: dos fotos apiladas ===== */
+.left-vert{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;           /* ocupa toda la altura de la fila del grid */
+  min-height: 0;          /* FIX Safari iOS para hijos flex con overflow */
+}
+.left-vert figure{
+  flex: 1 1 0;            /* ambas fotos reparten la altura */
+  min-height: 0;          /* FIX Safari iOS */
+  overflow: hidden;
+}
+.left-vert img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* recorte elegante */
+  display: block;
+}
+
+/* ===== Columna derecha: 1 imagen + texto ===== */
+.right-imgtext{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;          /* FIX Safari iOS */
+}
+.right-imgtext figure{
+  overflow: hidden;       /* evita desbordes en iOS */
+  min-height: 0;
+}
+.right-imgtext img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption-mono{
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono","Courier New", monospace;
+  letter-spacing: .06em;
+  line-height: 1.7;
+  font-size: 12.5px;
+  color: #2a2a2a;
+  white-space: pre-wrap;
+}
+
+/* Tuning fino en iPhone */
+@media (max-width: 540px){
+  .left-vert{ gap: 12px; }
+  .caption-mono{ font-size: 12px; line-height: 1.6; }
+}
+
+/* === Cuatro imágenes en grid 2x2 + caption debajo === */
+.spread--quad-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columnas fluidas */
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Mantiene proporciones limpias */
+.spread--quad-grid figure {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* ajusta a 1/1 si quieres cuadrado */
+  overflow: hidden;
+}
+.spread--quad-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption debajo de toda la cuadrícula */
+.spread--quad-grid-caption {
+  grid-column: 1 / -1; /* ocupa todo el ancho */
+ /* text-align: left;
+  margin-top: 4px;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono","Courier New", monospace;
+  text-transform: uppercase; 
+  letter-spacing: .06em;
+  line-height: 1.7;
+  font-size: 12.5px;
+  color: #2a2a2a;
+  white-space: pre-wrap;*/
+}
+
+/* Responsivo sin que se rompa en iPhone */
+@media (max-width: 540px) {
+  .spread--quad-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* mantiene 2 columnas */
+    gap: 10px;
+  }
+  .spread--quad-grid figure {
+    aspect-ratio: 3 / 4; /* un poco más alto en móvil */
+  }
+  .spread--quad-grid-caption {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
+/* === Dos imágenes lado a lado === */
+.spread--two-wide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 1 | 2 */
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Ambas imágenes se recortan igual */
+.spread--two-wide figure {
+  width: 100%;
+  aspect-ratio: 4 / 5;   /* ajusta a 1/1 o 3/4 si quieres otra proporción */
+  overflow: hidden;
+}
+
+.spread--two-wide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ✅ responsive: mantiene SIEMPRE las dos columnas incluso en iPhone */
+@media (max-width: 540px) {
+  .spread--two-wide {
+    gap: 10px;
+  }
+  .spread--two-wide figure {
+    aspect-ratio: 3 / 4;   /* un poco más alto en mobile */
+  }
+}
+
+
+
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <div class="kicker">journal 004</div>
+    <p>totebag from tshirt</p>
+  </div>
+</header>
+
+<main>
+    <section class="spread spread--single">
+        <figure class="figure-small">
+          <img src="./images/004.png" alt="">
+      
+        </figure>
+      </section>   
+
+
+  <section class="spread spread--two-wide">
+    <figure>
+      <img src="./004/0.jpg" alt="Image 1">
+    </figure>
+  
+    <figure>
+      <img src="./004/4.jpg" alt="Image 2">
+    </figure>
+
+
+    <figcaption class="spread--quad-grid-caption">
+      i tried to do like an storyboard to be aware on the filming side
+      </figcaption> 
+  </section>
+
+  <section class="spread spread--text-image side-by-side">
+    <div class="ti-text">
+      <div class="poem">
+        <span class="scene">the inspo to share</span>
+  when i read this book for the first time
+  it really changed my mind
+  i started to think more about the process 
+  rather than the product
+  because, at the end of the day, its about the journey
+
+<!--  "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
+  
+  share what you love, and the people who love, and the people who love the same things will find you."-->
+      </div>
+    </div>
+  
+    <div class="ti-images">
+        <figure class="ti-figure">
+          <img src="./004/8.jpg" alt="Upper image">
+        </figure>
+      </div>
+  </section>
+
+      
+      <section class="spread spread--postcard">
+        <figure>
+          <img src="./004/6.jpg" alt="">
+          <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption>
+        </figure>
+      </section>
+
+      <section class="spread spread--two-wide">
+        <figure>
+          <img src="./004/13.jpg" alt="Image 1">
+        </figure>
+      
+        <figure>
+          <img src="./004/9.jpg" alt="Image 2">
+        </figure>
+    
+    
+        <figcaption class="spread--quad-grid-caption">
+          did an experiment with a green tshirt before the release of the final version
+          </figcaption> 
+      </section>
+
+
+  <section class="spread spread--postcard">
+    <figure>
+      <img src="./004/1.jpg" alt="">
+      <figcaption>the canvas</figcaption>
+    </figure>
+  </section>
+
+      <section class="spread spread--left2-right-imgtext" style="--ratio-left: 4 / 5;">
+        <!-- IZQUIERDA: dos imágenes apiladas -->
+        <div class="left-vert">
+          <figure>
+            <img src="./004/12.jpg" alt="Left top">
+          </figure>
+          <figure>
+            <img src="./004/11.jpg" alt="Left bottom">
+          </figure>
+        </div>
+      
+        <!-- DERECHA: imagen + texto -->
+        <div class="right-imgtext">
+          <figure>
+            <img src="./004/10.jpg" alt="Right image">
+          </figure>
+          <figcaption class="caption-mono">the process<br><br><br><br>
+          </figcaption>
+        </div>
+      </section>
+    
+      
+
+      <section class="spread spread--postcard">
+        <figure>
+          <img src="./004/5.jpg" alt="">
+          <figcaption>document the steps</figcaption>
+        </figure>
+      </section>
+    
+      <section class="spread spread--postcard">
+        <figure>
+          <img src="./004/9.jpg" alt="">
+          <figcaption>the final version</figcaption>
+        </figure>
+      </section>
+
+     
+        
+</main>
+<script>
+  const input = document.getElementById('pick');
+  const collage = document.getElementById('collage');
+  input.addEventListener('change', e => {
+    const file = e.target.files && e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
+    reader.readAsDataURL(file);
+  });
+</script>
+
+</body>
+</html>
