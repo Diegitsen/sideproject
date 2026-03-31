@@ -12,19 +12,20 @@
         }
 
         .archive-grid {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 20px 40px;
+            width: 100%;
+            margin: 0;
+            padding: 80px 100px 120px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(6, 1fr);
+            row-gap: 78px;
+            column-gap: 24px;
         }
 
         .archive-grid img {
             width: auto;
             height: auto;
-            max-width: 200px;
-            max-height: 200px;
+            max-width: 250px;
+            max-height: 250px;
             display: block;
             margin: 0 auto;
             cursor: grab;
@@ -44,7 +45,7 @@
 
         @media (max-width: 850px) {
             .archive-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 gap: 16px;
                 padding: 60px 16px 30px;
             }
