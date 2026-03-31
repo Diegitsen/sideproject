@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title> diegitsen </title>
     <meta property="og:description" content="diegitsen."/>
     <meta property="og:type" content="website"/>
@@ -731,19 +731,18 @@
             padding: 1.5rem 2rem;
         }
 
-        #show-modal_page {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin: 1.5rem;
-        }
         </style>
 
-        <nav>
-            <!-- show modal -->
-            <div class="column" id="toggleIcon">
-                <a style="font-size: 14px" aria-label="about" class="column" href="./about/about.html" id="show-modal_page">(about)</a>
+        <div style="position: fixed; top: 1rem; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 1rem; z-index: 999999999;">
+            <div></div>
+            <div>
+                <a href="./archive.html" style="font-size: 16px; font-family: 'Chivo Mono', serif; font-weight: 400;">(archive)</a>
             </div>
+            <div>
+                <a href="./about/about.html" style="font-size: 16px; font-family: 'Chivo Mono', serif; font-weight: 400;">(about)</a>
+            </div>
+        </div>
+        <nav>
             <!-- modal -->
             <div aria-description="menu" id="modal_page" class="styled hide">
                 <div class="nav">
@@ -753,7 +752,6 @@
                         <!-- El div que se mostrará/ocultará al hacer clic en el botón -->
                         <div id="popupDiv">
                             <div class="nav-mobile-rrss">
-                                <a href="">angelagomez@gmail.com</a>
                                 <a href="./about/about.html">[info]</a>
                             </div>
                             <div class="main-categories">
@@ -1034,10 +1032,6 @@
                     </div>
                 </div>
                 <div class="column">
-                    <a href="mailto:angelagomezfornes@gmail.com">mailxd</a>
-                     /
-                          
-                    <a target="_blank" href="https://www.instagram.com/angelag______">@ig</a>
                 </div>
                 <div class="column">
                     <a href="./about/about.html">(about)</a>
