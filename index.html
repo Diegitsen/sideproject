@@ -1020,7 +1020,6 @@
         <nav class="main-nav">
             <div class="grid-container">
                 <div class="column">
-                    <button id="toggleButton">+ projects</button>
                 </div>
                 <div class="column">
                     <h2>???</h2>
@@ -1046,112 +1045,6 @@
             </div>
         </nav>
 
-        <!-- nav-proyectos -->
-        <div class="floating-menu grid-container" id="toggleDiv">
-            <div class="column" id="category-list">
-                <ul>
-                    <li class="category-item" data-category-id="6">
-                                        COMMERCIAL/PUBLICITY                </li>
-                    <li class="category-item" data-category-id="9">
-                                        FASHION                </li>
-                    <li class="category-item" data-category-id="12">
-                                        FILM                </li>
-                    <li class="category-item" data-category-id="13">
-                                        MUSIC &amp; CELEBS                </li>
-                    <li class="category-item" data-category-id="14">
-                                        DIRECTING                </li>
-                    <li class="category-item" data-category-id="15">
-                                        PERSONAL PROJECTS                </li>
-                </ul>
-            </div>
-
-            <div class="column" id="subcategory-projects">
-                <!-- Aquí se mostrarán las subcategorías y proyectos, pero inicialmente estará vacío -->
-            </div>
-
-            <script>
-            document.querySelectorAll('.category-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    // Primero, hacemos que todos los elementos se pongan grises oksi
-                    document.querySelectorAll('.category-item').forEach(el => el.classList.add('inactive'));
-
-                    // Luego, removemos la clase 'inactive' del que ha sido clickeado (para mantenerlo en su estado normal)
-                    this.classList.remove('inactive');
-
-                    var categoryId = this.getAttribute('data-category-id');
-
-                    // Hacer una solicitud AJAX para obtener las subcategorías y proyectos
-                    var data = {
-                        action: 'load_subcategories_projects',
-                        category_id: categoryId
-                    };
-
-                    // Limpiar el contenido anterior del div de subcategorías y proyectos
-                    var existingDiv = document.getElementById('subcategory-projects');
-                    existingDiv.innerHTML = ''; // Limpiar el contenido anterior
-
-                    fetch('https://angelagomezfornes.com/wp-admin/admin-ajax.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: new URLSearchParams(data).toString()
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log("Datos recibidos", data);
-                        var subcategoryDiv = document.getElementById('subcategory-projects');
-                        subcategoryDiv.innerHTML = ''; // Limpia el contenido anterior
-
-                        // Mostrar proyectos de la categoría principal
-                        var categoryProjectsList = '<ul><div class="nav-bg"></div>';
-                        data.projects.forEach(project => {
-                            categoryProjectsList += `<li><a href="${project.url}" class="post-title">${project.title}</a></li>`;
-                        });
-                        categoryProjectsList += '</ul>';
-                        subcategoryDiv.innerHTML = categoryProjectsList; // Reemplazar el contenido del div
-
-                        // Mostrar subcategorías y sus proyectos
-                        if (data.subcategories.length > 0) {
-                            var subcategoryList = '<ul>';
-                            data.subcategories.forEach(subcategory => {
-                                subcategoryList += `<li class="subcat">${subcategory.name}</li>`;
-
-                                if (subcategory.projects.length > 0) {
-                                    subcategoryList += '<ul class="projects-list">';
-                                    subcategory.projects.forEach(project => {
-                                        subcategoryList += `<li><a href="${project.url}" class="post-title">${project.title}</a></li>`;
-                                    });
-                                    subcategoryList += '</ul>';
-                                }
-                            });
-                            subcategoryList += '</ul>';
-                            subcategoryDiv.innerHTML += subcategoryList;
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error al cargar las subcategorías y proyectos:', error);
-                    });
-                });
-            });
-            </script>
-
-        </div>
-
-        <script>
-        const button = document.getElementById('toggleButton');
-        const div = document.getElementById('toggleDiv');
-
-        button.addEventListener('click', () => {
-            // Alternar entre mostrar y ocultar el div
-            if (div.style.display === 'none' || div.style.display === '') {
-                div.style.display = 'grid';
-            } else {
-                div.style.display = 'none';
-            }
-        });
-
-        </script>
 
     </div>
 
