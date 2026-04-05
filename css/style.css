@@ -245,6 +245,30 @@ figcaption {
 
     /**top-header**/
 
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+    }
+
+    .main-nav a,
+    .main-nav h1 {
+        font-size: 12px;
+        font-family: 'Chivo Mono', serif;
+        font-weight: 400;
+        text-decoration: none;
+    }
+
+    .main-nav-mobile a,
+    .main-nav-mobile h1 {
+        font-size: 16px;
+        font-family: 'Chivo Mono', serif;
+        font-weight: 400;
+        text-decoration: none;
+    }
+
     .grid-container {
         padding: 1rem;
         display: grid;
