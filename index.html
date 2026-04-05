@@ -20,7 +20,7 @@
     <meta name='robots' content='max-image-preview:large'/>
     <link rel='dns-prefetch' href='//cdnjs.cloudflare.com'/>
     <link rel='dns-prefetch' href='//fonts.googleapis.com'/>
-
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap'/>
 </head>
 <body class="home">
 
@@ -492,71 +492,93 @@
     addDraggableClassesToImages();
     </script>
 
+    <style>
+    .draggable:hover,
+    .dragging {
+        transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 14px 28px #FF6BBB, 0 10px 10px #FF6BBB;
+    }
+    body {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='6' fill='%23FF6BBB'/%3E%3C/svg%3E") 16 16, auto;
+    }
+    </style>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js'></script>
     <script>
     document.querySelectorAll('.draggable').forEach((img) => {
         let isDragging = false;
         let startX, startY;
+        let offsetX = 0, offsetY = 0;
 
-    img.addEventListener('mousedown', (e) => {
-        isDragging = false;
-        startX = e.clientX;
-        startY = e.clientY;
-    });
+        img.addEventListener('mousedown', (e) => {
+            isDragging = false;
+            startX = e.clientX;
+            startY = e.clientY;
 
-    img.addEventListener('mousemove', (e) => {
-        const dx = Math.abs(e.clientX - startX);
-        const dy = Math.abs(e.clientY - startY);
-        if (dx > 5 || dy > 5) {
-            isDragging = true;
-        }
-    });
+            const onMouseMove = (e) => {
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+                    isDragging = true;
+                }
+                offsetX += e.movementX;
+                offsetY += e.movementY;
+                TweenMax.set(img, { x: offsetX, y: offsetY });
+            };
 
-    img.addEventListener('mouseup', (e) => {
-        if (!isDragging) {
-            const customUrl = img.getAttribute('data-url')
-                || img.getAttribute('data-href')
-                || img.getAttribute('data-link');
-            let targetUrl = customUrl;
-            if (!targetUrl) {
-                const src = img.currentSrc || img.src || '';
-                const filename = src.split('?')[0].split('#')[0].split('/').pop() || '';
-                const base = filename.replace(/\.[^./]+$/, '');
-                targetUrl = base ? `${base}.html` : src;
-            }
-            window.location.href = targetUrl;
-        }
-    });
+            const onMouseUp = (e) => {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+                if (!isDragging) {
+                    const src = img.currentSrc || img.src || '';
+                    const filename = src.split('?')[0].split('#')[0].split('/').pop() || '';
+                    const base = filename.replace(/\.[^./]+$/, '');
+                    window.location.href = base ? `${base}.html` : src;
+                }
+            };
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+            e.preventDefault();
+        });
+
+        img.addEventListener('touchstart', (e) => {
+            isDragging = false;
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            let lastX = startX, lastY = startY;
+
+            const onTouchMove = (e) => {
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+                if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+                    isDragging = true;
+                }
+                offsetX += touch.clientX - lastX;
+                offsetY += touch.clientY - lastY;
+                lastX = touch.clientX;
+                lastY = touch.clientY;
+                TweenMax.set(img, { x: offsetX, y: offsetY });
+            };
+
+            const onTouchEnd = () => {
+                document.removeEventListener('touchmove', onTouchMove);
+                document.removeEventListener('touchend', onTouchEnd);
+                if (!isDragging) {
+                    const src = img.currentSrc || img.src || '';
+                    const filename = src.split('?')[0].split('#')[0].split('/').pop() || '';
+                    const base = filename.replace(/\.[^./]+$/, '');
+                    window.location.href = base ? `${base}.html` : src;
+                }
+            };
+
+            document.addEventListener('touchmove', onTouchMove);
+            document.addEventListener('touchend', onTouchEnd);
+        });
     });
     </script>
-
-<style>
-  .draggable:hover,
-  .dragging {
-    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    -webkit-box-shadow: 0 14px 28px #FF6BBB, 0 10px 10px #FF6BBB;
-    box-shadow: 0 14px 28px #FF6BBB, 0 10px 10px #FF6BBB;
-  }
-</style>
-
-<style>
-body {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='6' fill='%23FF6BBB'/%3E%3C/svg%3E") 16 16, auto;
-}
-</style>
-
-
-
-    <script type="speculationrules">
-    {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/angelatheme\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
-    </script>
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js'></script>
-    <script src="/index.js"></script>
 
 </body>
 </html>
