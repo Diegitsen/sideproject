@@ -24,7 +24,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
        /* Personalizar la selección de texto */
        ::selection {
         background: transparent; /* Fondo transparente */
-        color: #00FF44; /* Color del texto seleccionado */
+        color: #FF6BBB;
     }
 
 /* my css */
@@ -144,19 +144,11 @@ figcaption {
     }
 
 
-    .main-nav-mobile .home__mobile-title {
-        width: min-content;
-        white-space: nowrap;    
-        padding: 0 1rem;
-    }
-
-    .home__mobile-title h1 {
+    .main-nav-mobile a,
+    .main-nav-mobile h1 {
         font-size: 16px;
-    }
-
-    .home__mobile-title h2 {
-        font-size: 9px;
-        text-align-last: justify;
+        font-family: 'Chivo Mono', serif;
+        font-weight: 400;
     }
 
     #popupDiv {
