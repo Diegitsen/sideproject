@@ -14,7 +14,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --main-bg-color: rgb(255, 255, 255);  
+    --main-bg-color: rgb(243, 240, 233);  
     --main-text-color: #000000; 
     --second-color: #b2b2b2; 
     --main-font: "Chivo Mono", serif;
