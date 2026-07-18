@@ -773,15 +773,17 @@ style="
 
 <!-- JS opcional: permite subir una imagen y aplicar el efecto sin tocar código -->
 <script>
-  const input = document.getElementById('pick');
-  const collage = document.getElementById('collage');
+const input = document.getElementById('pick');
+const collage = document.getElementById('collage');
+if (input && collage) {
   input.addEventListener('change', e => {
     const file = e.target.files && e.target.files[0];
-    if(!file) return;
+    if (!file) return;
     const reader = new FileReader();
     reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
     reader.readAsDataURL(file);
   });
+}
 </script>
 
 </body>
