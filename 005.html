@@ -675,68 +675,62 @@
 
       <section class="spread spread--postcard">
         <figure>
-          <img src="./005/0.jpg" alt="">
-          <figcaption>the inspo started from this paper about a discovery of new lines of nazca</figcaption>
+          <img src="./005/0.png" alt="Article about an AI-assisted survey identifying new geoglyphs in Nazca">
+          <figcaption>an ai-assisted survey helped researchers identify 303 more figures in nazca.</figcaption>
         </figure>
       </section>
 
   <section class="spread spread--two-wide">
     <figure>
-      <img src="./005/6.jpg" alt="Image 1">
+      <img src="./005/5.jpg" alt="The research paper printed on the worktable">
     </figure>
   
     <figure>
-      <img src="./005/5.jpg" alt="Image 2">
+      <img src="./005/6.jpg" alt="The printed paper marked by hand">
     </figure>
 
 
     <figcaption class="spread--quad-grid-caption">
-     lets print it then
-      </figcaption> 
+      i printed the paper. out of 303 figures, i circled one.
+    </figcaption>
   </section>
 
   <section class="spread spread--postcard">
     <figure>
-      <img src="./005/7.jpg" alt="">
-      <figcaption>the alpaca one was my favorite!</figcaption>
-    </figure>
-  </section>
-
-  <section class="spread spread--postcard">
-    <figure>
-      <img src="./005/4.jpg" alt="">
-      <figcaption>happy because 🦙</figcaption>
+      <img src="./005/7.jpg" alt="A geoglyph resembling an alpaca circled in blue ink">
+      <figcaption>i could invent a better reason.<br>the truth is: i love alpacas.</figcaption>
     </figure>
   </section>
 
   <section class="spread spread--two-wide">
     <figure>
-      <img src="./005/8.jpg" alt="Image 1">
+      <img src="./005/4.jpg" alt="Diego with an alpaca during a trip to Peru">
     </figure>
   
     <figure>
-      <img src="./005/9.jpg" alt="Image 2">
+      <img src="./005/10.jpg" alt="An alpaca photographed during a trip to Peru">
     </figure>
 
 
     <figcaption class="spread--quad-grid-caption">
-     lets do an alpca form! (tal vez poner el dibujo de mi diary)
-      </figcaption> 
+      before 005, there was peru.
+    </figcaption>
   </section>
 
   <section class="spread spread--two-wide">
     <figure>
-      <img src="./005/10.jpg" alt="Image 1">
+      <img src="./005/9.jpg" alt="The white fabric being cut into a new shape">
     </figure>
   
     <figure>
-      <img src="./005/11.jpg" alt="Image 2">
+      <img src="./005/8.jpg" alt="The white figure being sewn onto a black sweatshirt">
     </figure>
 
 
     <figcaption class="spread--quad-grid-caption">
-     😍😍😍😍
-      </figcaption> 
+      paper became pattern. line became fabric.<br><br>
+      one machine helped find the line. another helped me follow it.
+    </figcaption>
   </section>
 
     
@@ -745,17 +739,5 @@
      
         
 </main>
-<script>
-  const input = document.getElementById('pick');
-  const collage = document.getElementById('collage');
-  input.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
-    reader.readAsDataURL(file);
-  });
-</script>
-
 </body>
 </html>

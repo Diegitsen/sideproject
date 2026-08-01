@@ -661,7 +661,7 @@
 <header class="site-header">
   <div class="inner">
     <div class="kicker">journal 004</div>
-    <p>totebag from tshirt</p>
+    <p>shirt into a bag</p>
   </div>
 </header>
 
@@ -685,23 +685,20 @@
 
 
     <figcaption class="spread--quad-grid-caption">
-      i tried to do like an storyboard to be aware on the filming side
-      </figcaption> 
+      in lisbon, i saw old denim carrying things instead of being worn.
+    </figcaption>
   </section>
 
   <section class="spread spread--text-image side-by-side">
     <div class="ti-text">
       <div class="poem">
-        <span class="scene">the inspo to share</span>
-  when i read this book for the first time
-  it really changed my mind
-  i started to think more about the process 
-  rather than the product
-  because, at the end of the day, its about the journey
+        <span class="scene">a voice of my own</span>
+  the email suggested recording myself
+  instead of borrowing another soundtrack.
 
-<!--  "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
-  
-  share what you love, and the people who love, and the people who love the same things will find you."-->
+  so, for the first time,
+  i used my own voice
+  to narrate how the shirt became a bag.
       </div>
     </div>
   
@@ -716,7 +713,7 @@
       <section class="spread spread--postcard">
         <figure>
           <img src="./004/6.jpg" alt="">
-          <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption>
+          <figcaption>one page planned the object. the other planned how to tell it.</figcaption>
         </figure>
       </section>
 
@@ -731,15 +728,15 @@
     
     
         <figcaption class="spread--quad-grid-caption">
-          did an experiment with a green tshirt before the release of the final version
-          </figcaption> 
+          i tried the shape with a green shirt first. the blue shirt became the final bag.
+        </figcaption>
       </section>
 
 
   <section class="spread spread--postcard">
     <figure>
       <img src="./004/1.jpg" alt="">
-      <figcaption>the canvas</figcaption>
+      <figcaption>before it carried anything, it was a shirt.</figcaption>
     </figure>
   </section>
 
@@ -759,7 +756,7 @@
           <figure>
             <img src="./004/10.jpg" alt="Right image">
           </figure>
-          <figcaption class="caption-mono">the process<br><br><br><br>
+          <figcaption class="caption-mono">while the shirt changed shape,<br>my voice narrated each step.<br><br><br>
           </figcaption>
         </div>
       </section>
@@ -769,31 +766,19 @@
       <section class="spread spread--postcard">
         <figure>
           <img src="./004/5.jpg" alt="">
-          <figcaption>document the steps</figcaption>
+          <figcaption>i wrote the steps down so the voice could follow the hands.</figcaption>
         </figure>
       </section>
     
       <section class="spread spread--postcard">
         <figure>
           <img src="./004/9.jpg" alt="">
-          <figcaption>the final version</figcaption>
+          <figcaption>the shirt became a bag. the process sounded like me.</figcaption>
         </figure>
       </section>
 
      
         
 </main>
-<script>
-  const input = document.getElementById('pick');
-  const collage = document.getElementById('collage');
-  input.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
-    reader.readAsDataURL(file);
-  });
-</script>
-
 </body>
 </html>

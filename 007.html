@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>journal 007<</title>
+  <title>journal 007</title>
 
   <style>
     :root {
@@ -675,79 +675,56 @@
 
       <section class="spread spread--postcard">
         <figure>
-          <img src="./007/0.jpg" alt="">
-          <figcaption>the muse</figcaption>
+          <img src="./007/0.jpg" alt="A grey and white cat looking up at the camera">
+          <figcaption>the cat came first.</figcaption>
         </figure>
       </section>
 
+      <section class="spread spread--postcard">
+        <figure>
+          <img src="./007/5.jpg" alt="A blank white shirt hanging on the wall">
+          <figcaption>then a white shirt.</figcaption>
+        </figure>
+      </section>
 
       <section class="spread spread--left2-right-imgtext" style="--ratio-left: 4 / 5;">
         <!-- IZQUIERDA: dos imágenes apiladas -->
         <div class="left-vert">
           <figure>
-            <img src="./007/5.jpg" alt="Left top">
+            <img src="./007/1.jpg" alt="A denim body and small fabric pieces pinned onto the shirt">
           </figure>
           <figure>
-            <img src="./007/1.jpg" alt="Left bottom">
+            <img src="./007/6.jpg" alt="Two mismatched fabric eyes arranged on denim">
           </figure>
         </div>
       
         <!-- DERECHA: imagen + texto -->
         <div class="right-imgtext">
           <figure>
-            <img src="./007/2.jpg" alt="Right image">
+            <img src="./007/2.jpg" alt="The cat face assembled from denim, striped fabric and buttons">
           </figure>
-          <figcaption class="caption-mono">the process<br><br><br><br><br><br>
+          <figcaption class="caption-mono">denim became a face.<br>buttons decided where it looked.<br><br><br><br>
           </figcaption>
         </div>
       </section>
 
-  
-
   <section class="spread spread--postcard">
     <figure>
-      <img src="./007/3.jpg" alt="">
-      <figcaption>the light was a good</figcaption>
+      <img src="./007/4.jpg" alt="The stitched cat face with mismatched eyes and a mouth made from buttons">
+      <figcaption>i kept the mismatched eyes, loose edges and every button.</figcaption>
     </figure>
-  </section>
-
-  <section class="spread spread--two-wide">
-    <figure>
-      <img src="./007/6.jpg" alt="Image 1">
-    </figure>
-  
-    <figure>
-      <img src="./007/4.jpg" alt="Image 2">
-    </figure>
-
-
-    <figcaption class="spread--quad-grid-caption">
-      the cat!
-      </figcaption> 
   </section>
 
 
   <section class="spread spread--postcard">
     <figure>
-      <img src="./007/7.jpg" alt="">
-      <figcaption>the end!</figcaption>
+      <img src="./007/7.jpg" alt="The finished white shirt with the invented denim cat laid on stones">
+      <figcaption>somewhere between the cat and the scraps, another creature appeared.</figcaption>
     </figure>
   </section>
 
 
 
 </main>
-<script>
-  const input = document.getElementById('pick');
-  const collage = document.getElementById('collage');
-  input.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
-    reader.readAsDataURL(file);
-  });
-</script>
-
 </body>
 </html>

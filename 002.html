@@ -568,6 +568,100 @@
   .caption-mono{ font-size: 12px; line-height: 1.6; }
 }
 
+.intro-note {
+  width: min(100%, 440px);
+  margin-left: auto;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: .04em;
+  color: #2a2a2a;
+}
+
+.room-spread {
+  width: 76%;
+  margin-left: auto;
+}
+
+.room-spread img {
+  width: 100%;
+  height: auto;
+}
+
+.room-note {
+  width: min(100%, 440px);
+  margin: 18px 0 0 auto;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: .04em;
+  color: #2a2a2a;
+}
+
+.creatures {
+  display: grid;
+  grid-template-columns: minmax(150px, .55fr) minmax(0, 1.45fr);
+  gap: clamp(24px, 7vw, 90px);
+  align-items: end;
+}
+
+.creature-reference {
+  align-self: center;
+}
+
+.creatures figure img {
+  width: 100%;
+  height: auto;
+}
+
+.creatures figcaption {
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: .05em;
+  text-transform: lowercase;
+}
+
+.closing-line {
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: .04em;
+  color: #2a2a2a;
+}
+
+@media (max-width: 540px) {
+  main {
+    padding: 16px;
+  }
+
+  .spread {
+    margin-bottom: 42px;
+  }
+
+  .figure-small img {
+    width: 58%;
+  }
+
+  .intro-note,
+  .room-note,
+  .closing-line {
+    font-size: 12px;
+  }
+
+  .creatures {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .creature-reference {
+    width: 68%;
+    margin: 0 auto;
+  }
+
+  .room-spread {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 
 
   </style>
@@ -583,91 +677,41 @@
 </header>
 
 <main>
-    <section class="spread spread--single">
-        <figure class="figure-small">
-          <img src="./images/002.png" alt="">
-      
-        </figure>
-      </section>   
-      
-      <section class="spread spread--postcard">
-        <figure>
-          <img src="./002/1.jpg" alt="">
-          <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption>
-        </figure>
-      </section>
-      
-       <!-- COMPONENT1 -->
-  <section class="spread spread--sync-height">
-    <!-- Izquierda: imagen que debe igualar la suma (derecha img + texto) -->
-    <figure class="sync-left">
-      <img src="./002/3.jpg" alt="Foto izquierda alta">
+  <!-- Every journal opens with its Polaroid cover. -->
+  <section class="spread">
+    <figure class="figure-small">
+      <img src="./images/002.png" alt="The finished Fantastic Mr. Fox-inspired shirt, journal 002">
     </figure>
-  
-    <!-- Derecha: imagen -->
-    <figure class="sync-right-photo">
-      <img src="./002/5.jpg" alt="Foto derecha">
-    </figure>
-  
-    <!-- Derecha: caption debajo -->
-    <figcaption class="sync-right-caption">
-  14:22
-  SHORTLY AFTER SEEING A ‘YELLOW BREASTED BIRDIE’
-  I FELT AN URGE TO PUT A FULL ZINGI SUIT ON.
-  
-  G07G NONNA PANTS, G02T NONNA TUBE SKIRT IN ZINGI FOR —
-  • DANCING IN THE SUN
-  • PAINTING IN THE DINING ROOM
-  • BURSTS OF INSPIRATION IN THE STUDIO.
-    </figcaption>
   </section>
- <!-- COMPONENT1 -->
 
- <section class="spread spread--postcard">
-  <figure>
-    <img src="./002/2.jpg" alt="">
-    <figcaption>the room was a mess</figcaption>
-  </figure>
-</section>
+  <!-- The affection comes first; the room is revealed later as a consequence. -->
+  <section class="spread">
+    <p class="intro-note">fantastic mr. fox is one of my favourite films.<br>i wanted to make a creature of my own.</p>
+  </section>
 
-      <section class="spread spread--text-image side-by-side">
-        <div class="ti-text">
-          <div class="poem">
-            <span class="scene">the inspo to share</span>
-      when i read this book for the first time
-      it really changed my mind
-      i started to think more about the process 
-      rather than the product
-      because, at the end of the day, its about the journey
+  <!-- The borrowed reference stays small; the handmade mutation dominates. -->
+  <section class="spread creatures">
+    <figure class="creature-reference">
+      <img src="./002/4.png" alt="A saved reference of an animal patch on a pocket">
+      <figcaption>another creature i kept nearby</figcaption>
+    </figure>
 
-    <!--  "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
-      
-      share what you love, and the people who love, and the people who love the same things will find you."-->
-          </div>
-        </div>
-      
-        <div class="ti-images">
-            <figure class="ti-figure">
-              <img src="./002/4.jpg" alt="Upper image">
-            </figure>
-          </div>
-      </section>
+    <div>
+      <figure>
+        <img src="./002/5.jpg" alt="A fabric creature assembled with visible pins on the shirt">
+      </figure>
+      <p class="closing-line">somewhere in the making,<br>it stopped looking like mr. fox.</p>
+    </div>
+  </section>
 
-
-  
-  
+  <!-- The mess is the aftermath of making, not a portrait without context. -->
+  <section class="spread room-spread">
+    <figure>
+      <img src="./002/2.jpg" alt="The room after making the fabric creature, with clothes and materials spread across the bed">
+      <figcaption class="room-note">by the time the creature appeared,<br>the room was a mess.</figcaption>
+    </figure>
+  </section>
 </main>
-<script>
-  const input = document.getElementById('pick');
-  const collage = document.getElementById('collage');
-  input.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
-    reader.readAsDataURL(file);
-  });
-</script>
 
 </body>
 </html>

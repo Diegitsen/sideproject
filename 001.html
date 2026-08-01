@@ -564,6 +564,37 @@
   .caption-mono{ font-size: 12px; line-height: 1.6; }
 }
 
+.document-small,
+.final-object {
+  width: 38%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.process-image {
+  width: 72%;
+  margin: 0 auto;
+}
+
+.appendix-label {
+  margin-bottom: 16px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .08em;
+  text-transform: lowercase;
+}
+
+@media (max-width: 540px) {
+  .document-small,
+  .final-object {
+    width: 62%;
+  }
+
+  .process-image {
+    width: 100%;
+  }
+}
+
 
 
   </style>
@@ -580,46 +611,60 @@
 </header>
 
 <main>
-    <section class="spread spread--single">
-        <figure class="figure-small">
-          <img src="./images/001.png" alt="">
-      
-        </figure>
-      </section>    
-
-      <section class="spread spread--text-image side-by-side">
-        <div class="ti-text">
-          <div class="poem">
-            <span class="scene">the inspo to share</span>
-      when i read this book for the first time
-      it really changed my mind
-      i started to think more about the process 
-      rather than the product
-      because, at the end of the day, its about the journey
-
-    <!--  "forget about being an expert or a proffesional, and wear your amateurism (your heart, your love) on yopur sleeve.
-      
-      share what you love, and the people who love, and the people who love the same things will find you."-->
-          </div>
-        </div>
-      
-        <div class="ti-images">
-            <figure class="ti-figure">
-              <img src="./001/1.jpg" alt="Upper image">
-            </figure>
-            <figure class="ti-figure">
-              <img src="./001/7.jpg" alt="Lower image">
-            </figure>
-          </div>
-      </section>
-
-  <!-- Collage de una sola imagen (reemplaza el spread--collage anterior) -->
-  <!-- Cambia la ruta en url(...) por tu imagen. Ajusta --pos1 y --pos2 para el encuadre. -->
+  <!-- Every journal opens with its Polaroid cover. -->
   <section class="spread">
-    <!-- OPCIONAL: selector de imagen para probar al vuelo -->
+    <figure class="final-object">
+      <img src="./images/001.png" alt="The finished sssstufff hoodie, journal 001">
+    </figure>
+  </section>
 
-    <div id="collage"
-         class="collage-feet"
+  <!-- The found eyes are the origin of the story. -->
+  <section class="spread spread--left2-right-imgtext" style="--ratio-left: 4 / 5;">
+    <div class="left-vert">
+      <figure>
+        <img src="./001/11.jpg" alt="A painted eye found on a street poster">
+      </figure>
+      <figure>
+        <img src="./001/12.jpg" alt="Another painted eye found in the street">
+      </figure>
+    </div>
+
+    <div class="right-imgtext">
+      <figure>
+        <img src="./001/4.jpg" alt="A face painted over a street poster">
+      </figure>
+      <figcaption class="caption-mono">14:22<br>i kept seeing this eye in different streets.<br>i photographed it before i knew why.</figcaption>
+    </div>
+  </section>
+
+  <!-- Permission to begin, kept secondary to the found image. -->
+  <section class="spread spread--text-image">
+    <div class="poem">i read this before i knew what i was making.<br>it gave me permission to begin before i was ready.</div>
+    <figure class="ti-figure">
+      <img src="./001/7.jpg" alt="A marked passage from Show Your Work">
+    </figure>
+  </section>
+
+  <!-- A working document, not the centre of the story. -->
+  <section class="spread">
+    <figure class="document-small">
+      <img src="./001/3.jpg" alt="A hand-drawn storyboard for filming the process">
+      <figcaption>a plan for filming the process</figcaption>
+    </figure>
+  </section>
+
+  <!-- The remembered eye becomes material. -->
+  <section class="spread">
+    <figure class="process-image">
+      <img src="./001/5.jpg" alt="Fabric scraps arranged into a face on a cutting mat">
+      <figcaption>months later, the eye returned in scraps</figcaption>
+    </figure>
+  </section>
+
+  <!-- References remain visible, but outside the main causal line. -->
+  <section class="spread" aria-labelledby="references-label">
+    <p id="references-label" class="appendix-label">references kept nearby while making</p>
+    <div class="collage-feet"
          style="
            --src1: url('./001/8.jpg');
            --src2: url('./001/9.jpg');
@@ -627,164 +672,9 @@
            --pos2: 70% 45%;
          ">
     </div>
-    <figcaption>some inspos i found on pinterest:)</figcaption>
   </section>
 
-  <section class="spread spread--postcard">
-    <figure>
-      <img src="./001/3.jpg" alt="">
-      <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption>
-    </figure>
-  </section>
-
-  <section class="spread spread--left2-right-imgtext" style="--ratio-left: 4 / 5;">
-    <!-- IZQUIERDA: dos imágenes apiladas -->
-    <div class="left-vert">
-      <figure>
-        <img src="./001/11.jpg" alt="Left top">
-      </figure>
-      <figure>
-        <img src="./001/12.jpg" alt="Left bottom">
-      </figure>
-    </div>
-  
-    <!-- DERECHA: imagen + texto -->
-    <div class="right-imgtext">
-      <figure>
-        <img src="./001/4.jpg" alt="Right image">
-      </figure>
-      <figcaption class="caption-mono">
-  14:22
-  i saw a lot of these type of eyes around the streets
-  when i was in a trip, for some reason those eyes
-  got my attention
-  
-  months later, it will be part of this journey
-  <!--<span class="dot">•</span> DANCING IN THE SUN
-  <span class="dot">•</span> PAINTING IN THE DINING ROOM
-  <span class="dot">•</span> BURSTS OF INSPIRATION IN THE STUDIO.-->
-      </figcaption>
-    </div>
-  </section>
-  
-
-  <!--<section class="spread spread--single">
-    <figure><img src="./001/4.jpg" alt=""></figure>
-  </section>-->
-
- <!-- <section class="spread spread--bleed">
-    <img src="./001/5.jpg" alt="">
-  </section> -->
-
-  <!--<section class="spread spread--diptych">
-    <figure><img src="assets/66712141-DCD6-422A-8FAF-F6B2A238FAE4.jpeg" alt=""></figure>
-    <figure><img src="assets/04A4B3B2-86A1-42D5-A320-F982BD08A71C.jpeg" alt=""></figure>
-  </section>-->
-
- <!-- <section class="spread spread--stack">
-    <figure><img src="assets/3F414E83-951A-4590-A3C1-17ED5680FB91.jpeg" alt=""></figure>
-    <figure><img src="assets/5F48682D-8438-4EA4-801F-65BA5BCFD872.jpeg" alt=""></figure>
-  </section>-->
-
-
-  
-  <!--<section class="spread spread--tall-vs-stack">
-    <figure class="frame tall-image">
-      <img src="./001/1.jpg" alt="Tall contact sheet image">
-    </figure>
-  
-    <div class="stack2">
-      <figure class="frame">
-        <img src="./001/2.jpg" alt="Tree and sky photo">
-      </figure>
-      <figure class="frame">
-        <img src="./001/3.jpg" alt="Yellow knit in interior">
-      </figure>
-    </div>
-  </section>-->
-  
-  <!--<section class="spread spread--sync-height">
-    <figure class="sync-left">
-      <img src="./001/3.jpg" alt="Foto izquierda alta">
-    </figure>
-  
-    <figure class="sync-right-photo">
-      <img src="./001/4.jpg" alt="Foto derecha">
-    </figure>
-  
-    <figcaption class="sync-right-caption">
-  14:22
-  SHORTLY AFTER SEEING A ‘YELLOW BREASTED BIRDIE’
-  I FELT AN URGE TO PUT A FULL ZINGI SUIT ON.
-  
-  G07G NONNA PANTS, G02T NONNA TUBE SKIRT IN ZINGI FOR —
-  • DANCING IN THE SUN
-  • PAINTING IN THE DINING ROOM
-  • BURSTS OF INSPIRATION IN THE STUDIO.
-    </figcaption>
-  </section>-->
-
-  <!--<section class="spread spread--overlay-2col"
-         style="--overlay-top:-5%; --overlay-top-mobile:-10%; --overlay-reserve:60px;">
-  <figure class="frame">
-    <img src="./001/1.jpg" alt="Imagen grande izquierda">
-  </figure>
-
-  <div class="right-block">
-    <figure class="frame">
-      <img src="./001/2.jpg" alt="Imagen derecha">
-    </figure>
-    <div class="one-line">G090 • NONNA WARMERS [2-LIMBS] • ‘INDIGO’ SHIBORI</div>
-  </div>
-
-  <div class="mid-overlay">
-    <figure class="frame">
-      <img src="./001/6.jpg" alt="Imagen pequeña superpuesta">
-    </figure>
-  </div>
-</section>-->
-
-<section class="spread spread--overlay-top-center"
-style="
-  --overlay-shift:-45%;          /* cuánto sobresale hacia arriba (desktop) */
-  --overlay-shift-mobile:-55%;   /* cuánto sobresale en iPhone */
-  --overlay-w:clamp(160px, 38vw, 460px);
-  --overlay-w-mobile:clamp(130px, 62vw, 340px);
-">
-<!-- Imagen grande -->
-<figure class="frame big-photo">
-<img src="./001/5.jpg" alt="Imagen grande">
-</figure>
-
-<!-- Imagen pequeña superpuesta arriba-centro -->
-<div class="small-overlay">
-<figure class="frame">
-<img src="./001/6.jpg" alt="Imagen pequeña superpuesta">
-</figure>
-</div>
-</section>
-
-  
 </main>
-
-<!--<footer class="site-footer">
-  <p>© Desert Dance — Day 5</p>
-</footer>-->
-
-<!-- JS opcional: permite subir una imagen y aplicar el efecto sin tocar código -->
-<script>
-const input = document.getElementById('pick');
-const collage = document.getElementById('collage');
-if (input && collage) {
-  input.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
-    reader.readAsDataURL(file);
-  });
-}
-</script>
 
 </body>
 </html>

@@ -619,6 +619,141 @@
   }
 }
 
+.journal-note {
+  width: min(100%, 430px);
+  margin-left: auto;
+  font-size: 13px;
+  line-height: 1.75;
+  letter-spacing: .05em;
+  color: #2a2a2a;
+}
+
+.fragments {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  grid-template-areas:
+    "building hand"
+    "building street";
+  gap: 20px;
+  align-items: stretch;
+}
+
+.fragment-building { grid-area: building; }
+.fragment-hand { grid-area: hand; }
+.fragment-street { grid-area: street; }
+
+.fragments figure {
+  overflow: hidden;
+}
+
+.fragments img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.encounter {
+  display: grid;
+  grid-template-columns: 1.35fr .65fr;
+  gap: clamp(24px, 6vw, 72px);
+  align-items: center;
+}
+
+.encounter-note {
+  margin-top: 18px;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: .04em;
+  color: #2a2a2a;
+}
+
+.making-pair {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 24px;
+  align-items: end;
+}
+
+.making-pair img,
+.inside img {
+  width: 100%;
+  height: auto;
+}
+
+.inside {
+  width: 82%;
+  margin-left: auto;
+}
+
+.last-line {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: .05em;
+  color: #2a2a2a;
+}
+
+@media (max-width: 540px) {
+  main {
+    padding: 16px;
+  }
+
+  .spread {
+    margin-bottom: 44px;
+  }
+
+  .figure-small img {
+    width: 58%;
+  }
+
+  .journal-note,
+  .last-line {
+    font-size: 12px;
+  }
+
+  .fragments {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .fragments figure {
+    height: auto;
+  }
+
+  .fragments img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .fragment-building { width: 88%; }
+  .fragment-hand { width: 64%; margin-left: auto; }
+  .fragment-street { width: 82%; }
+
+  .encounter {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .encounter-drawing {
+    width: 70%;
+    margin-left: auto;
+  }
+
+  .making-pair {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .making-chalk { width: 82%; }
+  .making-layout { width: 92%; margin-left: auto; }
+
+  .inside {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 
 
   </style>
@@ -634,87 +769,61 @@
 </header>
 
 <main>
-    <section class="spread spread--single">
-        <figure class="figure-small">
-          <img src="./images/003.png" alt="">
-      
-        </figure>
-      </section>   
-      
-      <section class="spread spread--postcard">
-        <figure>
-          <img src="./003/1.jpg" alt="">
-          <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption>
-        </figure>
-      </section>
+  <!-- Every journal opens with its Polaroid cover. -->
+  <section class="spread">
+    <figure class="figure-small">
+      <img src="./images/003.png" alt="A black blazer carrying a collection of Polaroids, journal 003">
+    </figure>
+  </section>
 
-      <section class="spread spread--quad-grid">
-        <figure><img src="./003/2.jpg" alt="image1"></figure>
-        <figure><img src="./003/3.jpg" alt="image2"></figure>
-        <figure><img src="./003/4.jpg" alt="image3"></figure>
-        <figure><img src="./003/5.jpg" alt="image4"></figure>
-      <!--  <figcaption>i tried to do like an storyboard to be aware on the filming side</figcaption> -->
-      
-       <figcaption class="spread--quad-grid-caption">
-        i tried to do like an storyboard to be aware on the filming side
-        </figcaption> 
-      </section>
-    
-      <section class="spread spread--postcard">
-        <figure>
-          <img src="./003/9.jpg" alt="">
-          <figcaption>the room was a mess</figcaption>
-        </figure>
-      </section>
+  <section class="spread">
+    <p class="journal-note">no theme.<br>no chronology.<br>just a few moments that ended up together.<br><br>first in my phone.<br>then on paper.<br>then on a blazer.</p>
+  </section>
 
-      <section class="spread spread--left2-right-imgtext" style="--ratio-left: 4 / 5;">
-        <!-- IZQUIERDA: dos imágenes apiladas -->
-        <div class="left-vert">
-          <figure>
-            <img src="./003/6.jpg" alt="Left top">
-          </figure>
-          <figure>
-            <img src="./003/8.jpg" alt="Left bottom">
-          </figure>
-        </div>
-      
-        <!-- DERECHA: imagen + texto -->
-        <div class="right-imgtext">
-          <figure>
-            <img src="./003/7.jpg" alt="Right image">
-          </figure>
-          <figcaption class="caption-mono">1. tiza <br>2. behind <br>3. first look of how the polaroids will fit with the blazer
-          </figcaption>
-        </div>
-      </section>
+  <!-- Unrelated photographs before the hand gives them a shared surface. -->
+  <section class="spread fragments" aria-label="Three unrelated moments">
+    <figure class="fragment-building">
+      <img src="./003/9.jpg" alt="Laundry hanging outside a pink building">
+    </figure>
+    <figure class="fragment-hand">
+      <img src="./003/10.jpg" alt="A hand wearing rings in passing sunlight">
+    </figure>
+    <figure class="fragment-street">
+      <img src="./003/11.jpg" alt="A crowded street at dusk">
+    </figure>
+  </section>
 
-      <section class="spread">
-        <!-- OPCIONAL: selector de imagen para probar al vuelo -->
-    
-        <div id="collage"
-             class="collage-feet"
-             style="
-               --src1: url('./003/11.jpg');
-               --src2: url('./003/10.jpg');
-               --pos1: 45% 70%;
-               --pos2: 70% 45%;
-             ">
-        </div>
-        <figcaption>some inspos i found on pinterest:)</figcaption>
-      </section>
-        
+  <!-- An influence from the same trip, without pretending it caused the blazer. -->
+  <section class="spread encounter">
+    <figure>
+      <img src="./003/4.jpg" alt="A street artist drawing at his table">
+    </figure>
+    <div>
+      <figure class="encounter-drawing">
+        <img src="./003/2.jpg" alt="Diego holding a drawing made by the street artist">
+      </figure>
+      <p class="encounter-note">he had nothing to do with the blazer.<br>watching him work still stayed with me.</p>
+    </div>
+  </section>
+
+  <!-- Measuring and arranging: the photographs begin to share a surface. -->
+  <section class="spread making-pair">
+    <figure class="making-chalk">
+      <img src="./003/6.jpg" alt="Chalk lines marking positions on the black blazer">
+    </figure>
+    <figure class="making-layout">
+      <img src="./003/7.jpg" alt="Polaroids arranged across the blazer before sewing">
+    </figure>
+  </section>
+
+  <!-- The journal ends on the side of the work that is normally hidden. -->
+  <section class="spread inside">
+    <figure>
+      <img src="./003/8.jpg" alt="The inside of the blazer with loose yellow stitching visible">
+    </figure>
+    <p class="last-line">the thread stayed visible on the inside.</p>
+  </section>
 </main>
-<script>
-  const input = document.getElementById('pick');
-  const collage = document.getElementById('collage');
-  input.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
-    reader.readAsDataURL(file);
-  });
-</script>
 
 </body>
 </html>

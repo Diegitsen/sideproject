@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>journal 006<</title>
+  <title>journal 006</title>
 
   <style>
     :root {
@@ -675,74 +675,62 @@
 
       <section class="spread spread--postcard">
         <figure>
-          <img src="./006/0.jpg" alt="">
-          <figcaption>the first idea was to use the same hoodie but with a design of card instead of a coffee, this idea was deprecated but i dont remember why</figcaption>
+          <img src="./006/0.jpg" alt="Notebook showing the abandoned playing-card idea for journal 006">
+          <figcaption>006 began as a playing card. i left it in the notebook.</figcaption>
         </figure>
       </section>
 
       <section class="spread spread--postcard">
         <figure>
-          <img src="./006/1.jpg" alt="">
-          <figcaption>first step</figcaption>
+          <img src="./006/1.jpg" alt="Fabric cups, flowers and tables pinned onto a blue Ganni sweatshirt">
+          <figcaption>the next idea was simpler: a table, two cups and flowers.</figcaption>
         </figure>
       </section>
 
   <section class="spread spread--two-wide">
     <figure>
-      <img src="./006/2.jpg" alt="Image 1">
+      <img src="./006/2.jpg" alt="The café scene being sewn onto the sweatshirt">
     </figure>
   
     <figure>
-      <img src="./006/3.jpg" alt="Image 2">
+      <img src="./006/3.jpg" alt="Close view of the sewing machine attaching the fabric pieces">
     </figure>
 
 
     <figcaption class="spread--quad-grid-caption">
-     sewing it
-      </figcaption> 
+      piece by piece, the café settled onto the sweatshirt.
+    </figcaption>
   </section>
 
   <section class="spread spread--postcard">
     <figure>
-      <img src="./006/5.jpg" alt="">
-      <figcaption>the room was a mess</figcaption>
+      <img src="./006/4.jpg" alt="Close view of two fabric cups and flowers on the finished café table">
+      <figcaption>there was no deeper theory. i just really love coffee.</figcaption>
     </figure>
   </section>
 
   <section class="spread spread--postcard">
     <figure>
-      <img src="./006/6.jpg" alt="">
-      <figcaption>the thing</figcaption>
+      <img src="./006/5.jpg" alt="The sweatshirt and fabric pieces covering a bed used as the worktable">
+      <figcaption>by the time the café was finished, the bed had become the worktable.</figcaption>
     </figure>
   </section>
 
   <section class="spread spread--two-wide">
     <figure>
-      <img src="./006/7.jpg" alt="Image 1">
+      <img src="./006/7.jpg" alt="Diego wearing the altered Ganni sweatshirt in a mirror">
     </figure>
   
     <figure>
-      <img src="./006/8.jpg" alt="Image 2">
+      <img src="./006/8.jpg" alt="The finished blue Ganni sweatshirt with the café scene sewn onto it">
     </figure>
 
 
     <figcaption class="spread--quad-grid-caption">
-    the final process
-      </figcaption> 
+      ganni made the sweatshirt. i put a café on it.
+    </figcaption>
   </section>
 
 </main>
-<script>
-  const input = document.getElementById('pick');
-  const collage = document.getElementById('collage');
-  input.addEventListener('change', e => {
-    const file = e.target.files && e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = () => collage.style.setProperty('--src', `url('${reader.result}')`);
-    reader.readAsDataURL(file);
-  });
-</script>
-
 </body>
 </html>
