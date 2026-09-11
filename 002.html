@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
@@ -10,7 +10,7 @@
 
   <style>
     :root {
-      --bg: #fff;
+      --bg: #f3f0e9;
       --fg: #111;
       --muted: #666;
       --maxw: 900px;
@@ -621,6 +621,16 @@
   text-transform: lowercase;
 }
 
+.creature-making {
+  width: min(100%, 650px);
+  margin-left: auto;
+}
+
+.creature-making img {
+  width: 100%;
+  height: auto;
+}
+
 .closing-line {
   margin-top: 18px;
   font-size: 13px;
@@ -688,33 +698,26 @@
     </figure>
   </section>
 
-  <!-- The affection comes first; the room is revealed later as a consequence. -->
+  <!-- Affection is the point of departure. -->
   <section class="spread">
-    <p class="intro-note">fantastic mr. fox is one of my favourite films.<br>i wanted to make a creature of my own.</p>
+    <p class="intro-note">fantastic mr. fox is one of my favourite films.<br><br>i began with mr. fox in mind.<br>i wanted to meet a creature of my own.</p>
   </section>
 
-  <!-- The borrowed reference stays small; the handmade mutation dominates. -->
-  <section class="spread creatures">
-    <figure class="creature-reference">
-      <img src="./002/4.png" alt="A saved reference of an animal patch on a pocket">
-      <figcaption>another creature i kept nearby</figcaption>
-    </figure>
-
+  <!-- The handmade mutation is allowed to carry the page by itself. -->
+  <section class="spread creature-making">
     <div>
       <figure>
         <img src="./002/5.jpg" alt="A fabric creature assembled with visible pins on the shirt">
       </figure>
-      <p class="closing-line">somewhere in the making,<br>it stopped looking like mr. fox.</p>
+      <p class="closing-line">the pins held the pieces still.<br>the face kept changing.</p>
     </div>
   </section>
 
-  <!-- The mess is the aftermath of making, not a portrait without context. -->
-  <section class="spread room-spread">
-    <figure>
-      <img src="./002/2.jpg" alt="The room after making the fabric creature, with clothes and materials spread across the bed">
-      <figcaption class="room-note">by the time the creature appeared,<br>the room was a mess.</figcaption>
-    </figure>
+  <section class="spread">
+    <p class="closing-line">somewhere in the making,<br>it stopped looking like mr. fox.<br><br>the final version was mine.</p>
   </section>
+
+  <!-- TODO Diego: add a clear final photograph of the finished creature, preferably worn. -->
 </main>
 
 <nav class="journal-pagination" aria-label="Journal pagination">
