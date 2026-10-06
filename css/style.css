@@ -618,45 +618,45 @@ span.draggable {
     }
 
     .object1 {
-        left: 50%;
+        left: 60%;
         transform: translateX(-50%);
-        top: 36px;
+        top: 50px;
     }
 
     .object2 {
-        left: 20%;
+        left: 15%;
         transform: translateX(-20%);
-        top: 456px;
+        top: 526px;
     }
 
     .object3 {
         left: 80%;
         transform: translateX(-80%);
-        top: 456px;
+        top: 496px;
     }
 
     .object4 {
-        right: 25px;
-        top: 405px;
+        right: -20px;
+        top: 385px;
     }
 
     .object5 {
-        right: 85px;
-        top: 155px;
+        right: 40px;
+        top: 185px;
     }
 
     .object6 {
         left: 25px;
-        top: 205px;
+        top: 290px;
     }
 
     .object7 {
-        left: 25px; 
-        top: 105px;
+        left: 65px; 
+        top: 95px;
     }
 
     .object8 {
-        right: 25px;
+        right: 155px;
         top: 585px;
     }
 
