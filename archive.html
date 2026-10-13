@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://diegitsen.com/archive.html">
     <title>archive — diegitsen</title>
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/style.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap'/>
     <style>
@@ -45,31 +45,7 @@
             box-shadow: 0 14px 28px #FF6BBB, 0 10px 10px #FF6BBB;
         }
 
-        .interaction-hint {
-            position: fixed;
-            top: 46px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-            margin: 0;
-            font-size: 10px;
-            opacity: 0.6;
-            white-space: nowrap;
-        }
-
-        .interaction-hint--mobile {
-            display: none;
-        }
-
         @media (max-width: 850px) {
-            .interaction-hint--desktop {
-                display: none;
-            }
-
-            .interaction-hint--mobile {
-                display: block;
-            }
-
             .archive-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 16px;
@@ -87,8 +63,6 @@
 </head>
 <body class="home">
 
-    <p class="interaction-hint interaction-hint--desktop">(drag to move · click to open)</p>
-    <p class="interaction-hint interaction-hint--mobile">(tap to open · drag to move)</p>
 
     <nav class="main-nav-mobile mobile" style="padding: 0 1rem; align-items: center;">
         <div></div>
